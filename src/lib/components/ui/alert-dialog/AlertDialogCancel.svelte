@@ -6,13 +6,15 @@
 		disabled?: boolean;
 		children?: Snippet;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
 		onclick,
 		disabled = false,
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 </script>
 
@@ -20,6 +22,7 @@
 	class="alertdialog-cancel {className}"
 	{disabled}
 	onclick={onclick}
+	{...restProps}
 >
 	{#if children}{@render children()}{/if}
 </button>

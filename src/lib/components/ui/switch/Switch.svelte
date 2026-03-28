@@ -6,6 +6,7 @@
 		name?: string;
 		onchange?: (checked: boolean) => void;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
@@ -14,7 +15,8 @@
 		id,
 		name,
 		onchange,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	function handleClick() {
@@ -43,6 +45,7 @@
 	{id}
 	{disabled}
 	class="switch {className}"
+	{...restProps}
 	class:checked
 	onclick={handleClick}
 	onkeydown={handleKeydown}

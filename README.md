@@ -1,42 +1,76 @@
-# sv
+# Daedalus UI
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Pure Svelte 5 component library. No dependencies, no Tailwind, no bits-ui.
 
-## Creating a project
+## Install
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
+```bash
+npm install git+ssh://git@github.com:GustawJot/daedalus.git#main
 ```
 
-To recreate this project with the same configuration:
+Requires `svelte ^5.0.0` as a peer dependency.
 
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --no-install .
+## Setup
+
+Import the theme CSS once in your root layout:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import 'daedalus/theme';
+</script>
+
+<slot />
 ```
 
-## Developing
+## Usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```svelte
+<script>
+  import { Button, Card, CardHeader, CardTitle, CardContent } from 'daedalus';
+</script>
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+<Card>
+  <CardHeader>
+    <CardTitle>Hello</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <Button>Click me</Button>
+  </CardContent>
+</Card>
 ```
 
-## Building
+## Dark mode
 
-To create a production version of your app:
+Add or remove the `dark` class on `<html>`:
 
-```sh
-npm run build
+```js
+document.documentElement.classList.add('dark');    // dark
+document.documentElement.classList.remove('dark');  // light
 ```
 
-You can preview the production build with `npm run preview`.
+If the user's OS prefers dark mode and you want to force light, add the `light` class instead.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Components
+
+**Primitives** --- Button, Badge, Input, Label, Textarea, Separator, Skeleton, Spinner, Typography, Empty
+
+**Layout** --- Card, Accordion, Collapsible, Tabs, Table
+
+**Form** --- Checkbox, Switch, Slider, RadioGroup, Select, Field, InputGroup, ButtonGroup, Toggle, ToggleGroup
+
+**Overlay** --- Dialog, AlertDialog, Sheet, Drawer, Popover, Tooltip, HoverCard, DropdownMenu, ContextMenu
+
+**Complex** --- Avatar, Alert, ScrollArea, Breadcrumb, Pagination, Calendar, DatePicker, Combobox, Command, DataTable, Sidebar, Toaster/toast, Item
+
+## Updating
+
+```bash
+npm update daedalus
+```
+
+Or pin to a specific commit:
+
+```bash
+npm install git+ssh://git@github.com:GustawJot/daedalus.git#<commit-sha>
+```

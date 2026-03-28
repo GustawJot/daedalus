@@ -46,7 +46,7 @@ test.describe('Page load & structure', () => {
 			'Toast (Sonner)'
 		];
 		for (const heading of expectedSections) {
-			await expect(page.locator('.section-title', { hasText: heading })).toBeVisible();
+			await expect(page.locator('.section-title', { hasText: new RegExp(`^${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) })).toBeVisible();
 		}
 	});
 
@@ -96,12 +96,12 @@ test.describe('Theme toggle', () => {
 // Buttons
 // ---------------------------------------------------------------------------
 test.describe('Button', () => {
-	test('all 6 variants are rendered', async ({ page }) => {
+	test('all 5 variants are rendered', async ({ page }) => {
 		await page.goto('/');
 		const section = page.locator('.demo-section', { has: page.locator('.section-title', { hasText: 'Button' }) });
 		const firstRow = section.locator('.demo-row').first();
 
-		for (const label of ['Default', 'Secondary', 'Destructive', 'Outline', 'Ghost', 'Link']) {
+		for (const label of ['Filled', 'Tonal', 'Outline', 'Ghost', 'Link']) {
 			await expect(firstRow.getByRole('button', { name: label })).toBeVisible();
 		}
 	});
@@ -116,11 +116,11 @@ test.describe('Button', () => {
 // Badge
 // ---------------------------------------------------------------------------
 test.describe('Badge', () => {
-	test('all 4 badge variants are rendered', async ({ page }) => {
+	test('all badge variants and tones are rendered', async ({ page }) => {
 		await page.goto('/');
 		const section = page.locator('.demo-section', { has: page.locator('.section-title', { hasText: /^Badge$/ }) });
 
-		for (const label of ['Default', 'Secondary', 'Destructive', 'Outline']) {
+		for (const label of ['Filled', 'Tonal', 'Critical', 'Outline', 'Success', 'Caution', 'Info']) {
 			await expect(section.getByText(label)).toBeVisible();
 		}
 	});
@@ -568,10 +568,13 @@ test.describe('Avatar', () => {
 // Alert
 // ---------------------------------------------------------------------------
 test.describe('Alert', () => {
-	test('default and destructive alerts are visible', async ({ page }) => {
+	test('all alert tones are visible', async ({ page }) => {
 		await page.goto('/');
 		await expect(page.getByText('Heads up!')).toBeVisible();
 		await expect(page.getByText('Your session has expired')).toBeVisible();
+		await expect(page.getByText('Your changes have been saved')).toBeVisible();
+		await expect(page.getByText('Your trial period expires')).toBeVisible();
+		await expect(page.getByText('A new version of the application')).toBeVisible();
 	});
 });
 

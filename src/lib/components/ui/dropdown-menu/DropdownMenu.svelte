@@ -20,6 +20,15 @@
 	}
 </script>
 
-{#if children}
-	{@render children({ open, close, toggle })}
-{/if}
+<div class="dropdown-wrapper">
+	{#if children}
+		{@render children({ open, close, toggle })}
+	{/if}
+</div>
+
+<style>
+	.dropdown-wrapper {
+		position: relative;
+		display: inline-flex;
+	}
+</style>

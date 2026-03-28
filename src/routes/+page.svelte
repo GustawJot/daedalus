@@ -102,8 +102,10 @@
 		darkMode = !darkMode;
 		if (darkMode) {
 			document.documentElement.classList.add('dark');
+			document.documentElement.classList.remove('light');
 		} else {
 			document.documentElement.classList.remove('dark');
+			document.documentElement.classList.add('light');
 		}
 	}
 </script>
@@ -149,16 +151,26 @@
 		<section class="demo-section">
 			<h2 class="section-title">Button</h2>
 			<div class="demo-row">
-				<Button>Default</Button>
-				<Button variant="secondary">Secondary</Button>
-				<Button variant="destructive">Destructive</Button>
+				<Button>Filled</Button>
+				<Button variant="tonal">Tonal</Button>
 				<Button variant="outline">Outline</Button>
 				<Button variant="ghost">Ghost</Button>
 				<Button variant="link">Link</Button>
 			</div>
 			<div class="demo-row">
+				<Button tone="critical">Critical</Button>
+				<Button tone="success">Success</Button>
+				<Button tone="caution">Caution</Button>
+				<Button tone="info">Info</Button>
+			</div>
+			<div class="demo-row">
+				<Button variant="outline" tone="critical">Outline Critical</Button>
+				<Button variant="tonal" tone="success">Tonal Success</Button>
+				<Button variant="ghost" tone="critical">Ghost Critical</Button>
+			</div>
+			<div class="demo-row">
 				<Button size="sm">Small</Button>
-				<Button size="default">Default</Button>
+				<Button>Medium</Button>
 				<Button size="lg">Large</Button>
 				<Button disabled>Disabled</Button>
 			</div>
@@ -170,10 +182,13 @@
 		<section class="demo-section">
 			<h2 class="section-title">Badge</h2>
 			<div class="demo-row">
-				<Badge>Default</Badge>
-				<Badge variant="secondary">Secondary</Badge>
-				<Badge variant="destructive">Destructive</Badge>
+				<Badge>Filled</Badge>
+				<Badge variant="tonal">Tonal</Badge>
+				<Badge tone="critical">Critical</Badge>
 				<Badge variant="outline">Outline</Badge>
+				<Badge tone="success">Success</Badge>
+				<Badge tone="caution">Caution</Badge>
+				<Badge tone="info">Info</Badge>
 			</div>
 		</section>
 
@@ -191,9 +206,11 @@
 					<Label for="demo-textarea">Message</Label>
 					<Textarea id="demo-textarea" placeholder="Type your message here..." rows={3} />
 				</Field>
-				<Field error="This field is required">
-					<Label for="demo-error">With error</Label>
+				<Field label="With error" labelFor="demo-error" error="This field is required" required>
 					<Input id="demo-error" placeholder="Required field" />
+				</Field>
+				<Field label="With description" labelFor="demo-desc" description="This field has a helpful description.">
+					<Input id="demo-desc" placeholder="Described field" />
 				</Field>
 			</div>
 		</section>
@@ -408,7 +425,7 @@
 						<TableRow>
 							<TableCell>{row.name}</TableCell>
 							<TableCell>{row.email}</TableCell>
-							<TableCell><Badge variant="outline">{row.role}</Badge></TableCell>
+							<TableCell><Badge variant="outline" tone="neutral">{row.role}</Badge></TableCell>
 						</TableRow>
 					{/each}
 				</TableBody>
@@ -437,9 +454,21 @@
 					<AlertTitle>Heads up!</AlertTitle>
 					<AlertDesc>You can add components to your app using the CLI.</AlertDesc>
 				</Alert>
-				<Alert variant="destructive">
+				<Alert tone="critical">
 					<AlertTitle>Error</AlertTitle>
 					<AlertDesc>Your session has expired. Please log in again.</AlertDesc>
+				</Alert>
+				<Alert tone="success">
+					<AlertTitle>Success</AlertTitle>
+					<AlertDesc>Your changes have been saved successfully.</AlertDesc>
+				</Alert>
+				<Alert tone="caution">
+					<AlertTitle>Warning</AlertTitle>
+					<AlertDesc>Your trial period expires in 3 days.</AlertDesc>
+				</Alert>
+				<Alert tone="info">
+					<AlertTitle>Info</AlertTitle>
+					<AlertDesc>A new version of the application is available.</AlertDesc>
 				</Alert>
 			</div>
 		</section>
@@ -549,7 +578,7 @@
 			<h2 class="section-title">Dialog & Alert Dialog</h2>
 			<div class="demo-row">
 				<Button onclick={() => dialogOpen = true}>Open Dialog</Button>
-				<Button variant="destructive" onclick={() => alertDialogOpen = true}>Open Alert Dialog</Button>
+				<Button tone="critical" onclick={() => alertDialogOpen = true}>Open Alert Dialog</Button>
 			</div>
 
 			<Dialog bind:open={dialogOpen}>
@@ -583,7 +612,7 @@
 					</AlertDialogHeader>
 					<AlertDialogFooter>
 						<AlertDialogCancel onclick={() => alertDialogOpen = false}>Cancel</AlertDialogCancel>
-						<AlertDialogAction onclick={() => { alertDialogOpen = false; toast.error('Account deleted'); }}>Delete Account</AlertDialogAction>
+						<AlertDialogAction tone="critical" onclick={() => { alertDialogOpen = false; toast.error('Account deleted'); }}>Delete Account</AlertDialogAction>
 					</AlertDialogFooter>
 				</AlertDialogContent>
 			</AlertDialog>
@@ -615,17 +644,18 @@
 		<section class="demo-section">
 			<h2 class="section-title">Popover & Tooltip</h2>
 			<div class="demo-row">
-				<Popover bind:open={popoverOpen}>
-					<PopoverTrigger onclick={() => popoverOpen = !popoverOpen}>
+				{#snippet popoverChildren({ open: isOpen, close, toggle }: { open: boolean; close: () => void; toggle: () => void })}
+					<PopoverTrigger onclick={toggle}>
 						<Button variant="outline">Open Popover</Button>
 					</PopoverTrigger>
-					<PopoverContent open={popoverOpen}>
+					<PopoverContent open={isOpen} onclose={close}>
 						<div class="popover-body">
 							<Typography variant="h4">Dimensions</Typography>
 							<Typography variant="muted">Set the dimensions for the layer.</Typography>
 						</div>
 					</PopoverContent>
-				</Popover>
+				{/snippet}
+				<Popover bind:open={popoverOpen} children={popoverChildren} />
 				<Tooltip content="This is a tooltip" side="top">
 					<Button variant="outline">Hover me</Button>
 				</Tooltip>
@@ -644,13 +674,13 @@
 				<DropdownMenuTrigger onclick={toggle}>
 					<Button variant="outline">Open Menu</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent open={isOpen}>
+				<DropdownMenuContent open={isOpen} onclose={close}>
 					<DropdownMenuLabel>My Account</DropdownMenuLabel>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem onclick={() => toast('Profile clicked')}>Profile</DropdownMenuItem>
 					<DropdownMenuItem onclick={() => toast('Settings clicked')}>Settings</DropdownMenuItem>
 					<DropdownMenuSeparator />
-					<DropdownMenuItem onclick={() => toast.error('Logged out')} destructive>Log out</DropdownMenuItem>
+					<DropdownMenuItem onclick={() => toast.error('Logged out')} tone="critical">Log out</DropdownMenuItem>
 				</DropdownMenuContent>
 			{/snippet}
 			<DropdownMenu bind:open={dropdownOpen} children={dropdownChildren} />
@@ -683,8 +713,8 @@
 			<h2 class="section-title">Toast (Sonner)</h2>
 			<div class="demo-row">
 				<Button onclick={() => toast('This is a default toast')}>Default</Button>
-				<Button variant="secondary" onclick={() => toast.success('Operation successful!')}>Success</Button>
-				<Button variant="destructive" onclick={() => toast.error('Something went wrong')}>Error</Button>
+				<Button tone="success" onclick={() => toast.success('Operation successful!')}>Success</Button>
+				<Button tone="critical" onclick={() => toast.error('Something went wrong')}>Error</Button>
 				<Button variant="outline" onclick={() => toast.info('Here is some information')}>Info</Button>
 			</div>
 		</section>

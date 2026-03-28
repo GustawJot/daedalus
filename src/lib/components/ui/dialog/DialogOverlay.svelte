@@ -13,7 +13,7 @@
 	.dialog-overlay {
 		position: fixed;
 		inset: 0;
-		z-index: var(--z-overlay, 50);
+		z-index: var(--z-overlay, 400);
 		background-color: rgb(0 0 0 / 0.8);
 		animation: overlay-in var(--transition-normal, 200ms) ease-out;
 	}

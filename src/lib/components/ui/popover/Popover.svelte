@@ -20,6 +20,15 @@
 	}
 </script>
 
-{#if children}
-	{@render children({ open, close, toggle })}
-{/if}
+<div class="popover-wrapper">
+	{#if children}
+		{@render children({ open, close, toggle })}
+	{/if}
+</div>
+
+<style>
+	.popover-wrapper {
+		position: relative;
+		display: inline-flex;
+	}
+</style>

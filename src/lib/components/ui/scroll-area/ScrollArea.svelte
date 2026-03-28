@@ -24,7 +24,6 @@
 	.scroll-area {
 		position: relative;
 		width: 100%;
-		height: 100%;
 		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 

@@ -10,6 +10,7 @@
 		onchange?: (value: string) => void;
 		children?: Snippet;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
@@ -20,7 +21,8 @@
 		name,
 		onchange,
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	function handleChange() {
@@ -29,7 +31,7 @@
 	}
 </script>
 
-<label class="radio-item {className}" class:disabled>
+<label class="radio-item {className}" class:disabled {...restProps}>
 	<input
 		type="radio"
 		class="radio-input"

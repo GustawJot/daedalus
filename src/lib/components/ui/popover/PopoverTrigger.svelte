@@ -14,14 +14,17 @@
 	}: Props = $props();
 </script>
 
-<button
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div
 	class="popover-trigger {className}"
-	type="button"
+	role="button"
+	tabindex="0"
 	aria-haspopup="dialog"
 	onclick={onclick}
+	onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onclick?.(); } }}
 >
 	{#if children}{@render children()}{/if}
-</button>
+</div>
 
 <style>
 	.popover-trigger {

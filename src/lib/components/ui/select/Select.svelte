@@ -17,6 +17,7 @@
 			close: () => void;
 		}]>;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
@@ -26,7 +27,8 @@
 		name,
 		placeholder = 'Select...',
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	let displayText = $state('');
@@ -63,6 +65,7 @@
 <div
 	class="select-root {className}"
 	class:disabled
+	{...restProps}
 >
 	{#if children}
 		{@render children({

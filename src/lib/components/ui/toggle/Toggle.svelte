@@ -1,24 +1,27 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { Size } from '../types.js';
 
 	type Props = {
 		pressed?: boolean;
-		variant?: 'default' | 'outline';
-		size?: 'default' | 'sm' | 'lg';
+		variant?: 'ghost' | 'outline';
+		size?: Size;
 		disabled?: boolean;
 		onchange?: (pressed: boolean) => void;
 		children?: Snippet;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
 		pressed = $bindable(false),
-		variant = 'default',
-		size = 'default',
+		variant = 'ghost',
+		size = 'md',
 		disabled = false,
 		onchange,
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	function handleClick() {
@@ -35,6 +38,7 @@
 	aria-pressed={pressed}
 	{disabled}
 	onclick={handleClick}
+	{...restProps}
 >
 	{#if children}
 		{@render children()}
@@ -101,8 +105,8 @@
 		color: hsl(var(--accent-foreground));
 	}
 
-	/* Size: default */
-	.toggle.size-default {
+	/* Size: md */
+	.toggle.size-md {
 		height: 2.25rem;
 		padding: 0.5rem 0.75rem;
 	}

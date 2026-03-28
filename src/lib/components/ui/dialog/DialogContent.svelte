@@ -94,7 +94,7 @@
 	.dialog-portal {
 		position: fixed;
 		inset: 0;
-		z-index: var(--z-modal, 50);
+		z-index: var(--z-modal, 500);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -102,7 +102,7 @@
 
 	.dialog-content {
 		position: relative;
-		z-index: 1;
+		z-index: var(--z-modal, 500);
 		display: grid;
 		width: 100%;
 		max-width: 32rem;

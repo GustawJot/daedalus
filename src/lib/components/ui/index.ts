@@ -1,6 +1,9 @@
 // Daedalus UI — Pure Svelte 5 Component Library
 // No dependencies. No Tailwind. No bits-ui.
 
+// Types
+export type { Variant, Tone, Size, InteractiveProps, FormControlProps } from './types.js';
+
 // Primitives
 export { Button } from './button/index.js';
 export { Badge } from './badge/index.js';

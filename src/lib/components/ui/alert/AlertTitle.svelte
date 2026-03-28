@@ -4,15 +4,17 @@
 	type Props = {
 		children?: Snippet;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 </script>
 
-<h5 class="alert-title {className}">
+<h5 class="alert-title {className}" {...restProps}>
 	{#if children}{@render children()}{/if}
 </h5>
 

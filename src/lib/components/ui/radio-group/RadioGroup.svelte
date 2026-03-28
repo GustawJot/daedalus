@@ -9,6 +9,7 @@
 		onchange?: (value: string) => void;
 		children?: Snippet<[{ value: string; set: (v: string) => void }]>;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
@@ -18,7 +19,8 @@
 		orientation = 'vertical',
 		onchange,
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	function set(newValue: string) {
@@ -32,6 +34,7 @@
 	aria-orientation={orientation}
 	class="radio-group {orientation} {className}"
 	class:disabled
+	{...restProps}
 >
 	{#if children}
 		{@render children({ value, set })}

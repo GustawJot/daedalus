@@ -9,6 +9,7 @@
 		name?: string;
 		onchange?: (value: number) => void;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
@@ -20,7 +21,8 @@
 		id,
 		name,
 		onchange,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	let percentage = $derived(((value - min) / (max - min)) * 100);
@@ -32,7 +34,7 @@
 	}
 </script>
 
-<div class="slider-wrapper {className}" class:disabled>
+<div class="slider-wrapper {className}" class:disabled {...restProps}>
 	<input
 		type="range"
 		class="slider"

@@ -3,18 +3,20 @@
 
 	type Props = {
 		disabled?: boolean;
-		destructive?: boolean;
+		tone?: 'neutral' | 'critical';
 		onclick?: () => void;
 		children?: Snippet;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
 		disabled = false,
-		destructive = false,
+		tone = 'neutral',
 		onclick,
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -29,14 +31,14 @@
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div
-	class="dropdown-item {className}"
-	class:destructive
+	class="dropdown-item tone-{tone} {className}"
 	class:disabled
 	role="menuitem"
 	tabindex={disabled ? -1 : 0}
 	aria-disabled={disabled || undefined}
 	onclick={() => !disabled && onclick?.()}
 	onkeydown={handleKeydown}
+	{...restProps}
 >
 	{#if children}{@render children()}{/if}
 </div>
@@ -69,12 +71,12 @@
 		outline: none;
 	}
 
-	.dropdown-item.destructive {
+	.dropdown-item.tone-critical {
 		color: hsl(var(--destructive));
 	}
 
-	.dropdown-item.destructive:hover,
-	.dropdown-item.destructive:focus-visible {
+	.dropdown-item.tone-critical:hover,
+	.dropdown-item.tone-critical:focus-visible {
 		background-color: hsl(var(--destructive));
 		color: hsl(var(--destructive-foreground));
 	}

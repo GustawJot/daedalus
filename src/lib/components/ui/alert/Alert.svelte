@@ -1,24 +1,26 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-
-	export type AlertVariant = 'default' | 'destructive';
+	import type { Tone } from '../types.js';
 
 	type Props = {
-		variant?: AlertVariant;
+		tone?: Tone;
 		children?: Snippet;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
-		variant = 'default',
+		tone = 'neutral',
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 </script>
 
 <div
 	role="alert"
-	class="alert {variant} {className}"
+	class="alert tone-{tone} {className}"
+	{...restProps}
 >
 	{#if children}{@render children()}{/if}
 </div>
@@ -35,23 +37,65 @@
 		line-height: 1.5;
 	}
 
-	.default {
+	.tone-neutral {
 		background-color: hsl(var(--background));
 		color: hsl(var(--foreground));
 		border-color: hsl(var(--border));
 	}
 
-	.destructive {
+	.tone-critical {
 		background-color: hsl(var(--destructive) / 0.1);
 		color: hsl(var(--destructive));
 		border-color: hsl(var(--destructive) / 0.5);
 	}
 
-	.destructive :global(.alert-title) {
+	.tone-critical :global(.alert-title) {
 		color: hsl(var(--destructive));
 	}
 
-	.destructive :global(.alert-description) {
+	.tone-critical :global(.alert-description) {
 		color: hsl(var(--destructive) / 0.9);
+	}
+
+	.tone-success {
+		background-color: hsl(var(--success) / 0.1);
+		color: hsl(var(--success));
+		border-color: hsl(var(--success) / 0.5);
+	}
+
+	.tone-success :global(.alert-title) {
+		color: hsl(var(--success));
+	}
+
+	.tone-success :global(.alert-description) {
+		color: hsl(var(--success) / 0.9);
+	}
+
+	.tone-caution {
+		background-color: hsl(var(--caution) / 0.1);
+		color: hsl(var(--caution));
+		border-color: hsl(var(--caution) / 0.5);
+	}
+
+	.tone-caution :global(.alert-title) {
+		color: hsl(var(--caution));
+	}
+
+	.tone-caution :global(.alert-description) {
+		color: hsl(var(--caution) / 0.9);
+	}
+
+	.tone-info {
+		background-color: hsl(var(--info) / 0.1);
+		color: hsl(var(--info));
+		border-color: hsl(var(--info) / 0.5);
+	}
+
+	.tone-info :global(.alert-title) {
+		color: hsl(var(--info));
+	}
+
+	.tone-info :global(.alert-description) {
+		color: hsl(var(--info) / 0.9);
 	}
 </style>

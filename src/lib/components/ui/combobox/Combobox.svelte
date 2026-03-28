@@ -11,6 +11,7 @@
 		disabled?: boolean;
 		emptyMessage?: string;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
@@ -19,7 +20,8 @@
 		placeholder = 'Search...',
 		disabled = false,
 		emptyMessage = 'No results found.',
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	let open = $state(false);
@@ -109,7 +111,7 @@
 	});
 </script>
 
-<div class="combobox {className}" class:disabled>
+<div class="combobox {className}" class:disabled {...restProps}>
 	<button
 		type="button"
 		class="combobox-trigger"

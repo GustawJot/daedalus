@@ -11,6 +11,7 @@
 		onchange?: (checked: boolean) => void;
 		children?: Snippet;
 		class?: string;
+		[key: string]: unknown;
 	};
 
 	let {
@@ -22,7 +23,8 @@
 		required = false,
 		onchange,
 		children,
-		class: className = ''
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	function handleChange() {
@@ -39,7 +41,7 @@
 	}
 </script>
 
-<label class="checkbox-wrapper {className}" class:disabled>
+<label class="checkbox-wrapper {className}" class:disabled {...restProps}>
 	<input
 		type="checkbox"
 		class="checkbox-input"

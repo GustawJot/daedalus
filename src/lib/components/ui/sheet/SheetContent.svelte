@@ -91,12 +91,12 @@
 	.sheet-portal {
 		position: fixed;
 		inset: 0;
-		z-index: var(--z-modal, 50);
+		z-index: var(--z-modal, 500);
 	}
 
 	.sheet-content {
 		position: fixed;
-		z-index: 1;
+		z-index: var(--z-modal, 500);
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
