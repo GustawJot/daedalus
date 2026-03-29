@@ -1,5 +1,6 @@
 <script lang="ts">
 	type Props = {
+		id?: string;
 		page: number;
 		active?: boolean;
 		onclick?: () => void;
@@ -7,6 +8,7 @@
 	};
 
 	let {
+		id,
 		page,
 		active = false,
 		onclick,
@@ -14,7 +16,7 @@
 	}: Props = $props();
 </script>
 
-<li>
+<li {id}>
 	<button
 		type="button"
 		class="pagination-item {className}"
@@ -39,13 +41,12 @@
 		min-width: 2.25rem;
 		height: 2.25rem;
 		padding: 0 0.5rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
 		background-color: transparent;
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		font-weight: 500;
+		color: var(--foreground);
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
 		cursor: pointer;
 		transition-property: background-color, color, border-color;
 		transition-duration: var(--transition-fast, 150ms);
@@ -53,18 +54,13 @@
 	}
 
 	.pagination-item:hover {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
-	}
-
-	.pagination-item:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.pagination-item.active {
-		background-color: hsl(var(--primary));
-		color: hsl(var(--primary-foreground));
-		border-color: hsl(var(--primary));
+		background-color: var(--primary);
+		color: var(--primary-foreground);
+		border-color: var(--primary);
 	}
 </style>

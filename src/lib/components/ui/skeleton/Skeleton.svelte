@@ -16,7 +16,7 @@
 <style>
 	.skeleton {
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--muted));
+		background-color: var(--muted);
 		animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 	}
 

@@ -46,26 +46,23 @@
 	.field {
 		display: flex;
 		flex-direction: column;
-		gap: 0.375rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		gap: var(--space-1-5);
 	}
 
 	.field-description {
-		margin: 0;
 		font-size: var(--text-sm, 0.875rem);
-		line-height: 1.25rem;
-		color: hsl(var(--muted-foreground));
+		line-height: var(--leading-sm);
+		color: var(--muted-foreground);
 	}
 
 	.field-error {
-		margin: 0;
-		font-size: 0.8125rem;
-		line-height: 1.25rem;
-		font-weight: 500;
-		color: hsl(var(--destructive));
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
+		font-weight: var(--font-medium);
+		color: var(--destructive);
 	}
 
 	.required-mark {
-		color: hsl(var(--destructive));
+		color: var(--destructive);
 	}
 </style>

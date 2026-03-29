@@ -22,7 +22,6 @@
 	.table-cell {
 		padding: 0.75rem 1rem;
 		vertical-align: middle;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.table-cell[align='center'] {

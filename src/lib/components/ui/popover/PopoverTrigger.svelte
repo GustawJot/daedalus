@@ -2,12 +2,14 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		onclick?: () => void;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		onclick,
 		children,
 		class: className = ''
@@ -16,6 +18,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
+	{id}
 	class="popover-trigger {className}"
 	role="button"
 	tabindex="0"
@@ -33,7 +36,6 @@
 		justify-content: center;
 		background: transparent;
 		border: none;
-		padding: 0;
 		cursor: pointer;
 		font: inherit;
 		color: inherit;
@@ -41,7 +43,7 @@
 	}
 
 	.popover-trigger:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 		border-radius: var(--radius, 0.25rem);
 	}

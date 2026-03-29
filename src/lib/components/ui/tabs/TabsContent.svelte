@@ -36,12 +36,11 @@
 <style>
 	.tabs-content {
 		margin-top: 0.5rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 	}
 
 	.tabs-content:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 		border-radius: var(--radius, 0.375rem);
 	}

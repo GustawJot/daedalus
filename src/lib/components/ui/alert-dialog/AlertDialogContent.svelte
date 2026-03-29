@@ -3,6 +3,7 @@
 	import DialogOverlay from '../dialog/DialogOverlay.svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		onclose?: () => void;
 		children?: Snippet;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		open = false,
 		onclose,
 		children,
@@ -69,6 +71,7 @@
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<div
 			bind:this={contentEl}
+			{id}
 			class="alertdialog-content {className}"
 			role="alertdialog"
 			aria-modal="true"
@@ -98,16 +101,15 @@
 		max-width: 32rem;
 		max-height: calc(100vh - 2rem);
 		overflow-y: auto;
-		gap: 1rem;
-		border: 1px solid hsl(var(--border));
+		gap: var(--space-4);
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.5rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		background-color: var(--background);
+		color: var(--foreground);
 		padding: 1.5rem;
 		box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
 		animation: alertdialog-in var(--transition-normal, 200ms) ease-out;
 		outline: none;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	@keyframes alertdialog-in {

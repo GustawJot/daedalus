@@ -4,6 +4,7 @@
 	export type TooltipSide = 'top' | 'bottom' | 'left' | 'right';
 
 	type Props = {
+		id?: string;
 		content?: string;
 		side?: TooltipSide;
 		delay?: number;
@@ -12,6 +13,7 @@
 	};
 
 	let {
+		id,
 		content = '',
 		side = 'top',
 		delay = 200,
@@ -39,6 +41,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <span
+	{id}
 	class="tooltip-wrapper {className}"
 	onmouseenter={show}
 	onmouseleave={hide}
@@ -65,12 +68,11 @@
 		z-index: var(--z-tooltip, 50);
 		white-space: nowrap;
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--foreground));
-		color: hsl(var(--background));
+		background-color: var(--foreground);
+		color: var(--background);
 		padding: 0.375rem 0.75rem;
-		font-size: 0.75rem;
-		line-height: 1.4;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-xs);
+		line-height: var(--leading-snug);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 		pointer-events: none;
 		animation: tooltip-in var(--transition-fast, 150ms) ease-out;
@@ -119,7 +121,7 @@
 		position: absolute;
 		width: 0.5rem;
 		height: 0.5rem;
-		background-color: hsl(var(--foreground));
+		background-color: var(--foreground);
 		transform: rotate(45deg);
 	}
 

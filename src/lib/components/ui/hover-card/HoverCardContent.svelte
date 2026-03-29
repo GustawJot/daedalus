@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		children?: Snippet;
 		class?: string;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		open = false,
 		children,
 		class: className = '',
@@ -21,6 +23,7 @@
 {#if open}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
+		{id}
 		class="hovercard-content {className}"
 		onmouseenter={onmouseenter}
 		onmouseleave={onmouseleave}
@@ -38,13 +41,12 @@
 		transform: translateX(-50%);
 		margin-top: 0.5rem;
 		width: 16rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.5rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		background-color: var(--background);
+		color: var(--foreground);
 		padding: 1rem;
 		box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
-		font-family: var(--font-sans, system-ui, sans-serif);
 		animation: hovercard-in var(--transition-fast, 150ms) ease-out;
 	}
 

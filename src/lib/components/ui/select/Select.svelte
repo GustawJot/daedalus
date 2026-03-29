@@ -90,7 +90,6 @@
 		position: relative;
 		display: inline-flex;
 		flex-direction: column;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.select-root.disabled {

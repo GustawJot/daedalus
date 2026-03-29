@@ -2,12 +2,14 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
+		id?: string;
 		value?: string;
 		children?: Snippet<[{ value: string; set: (v: string) => void }]>;
 		class?: string;
 	}
 
 	let {
+		id,
 		value = $bindable(''),
 		children,
 		class: className = ''
@@ -18,13 +20,12 @@
 	}
 </script>
 
-<div class="tabs {className}" data-orientation="horizontal">
+<div {id} class="tabs {className}" data-orientation="horizontal">
 	{#if children}{@render children({ value, set })}{/if}
 </div>
 
 <style>
 	.tabs {
 		width: 100%;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 </style>

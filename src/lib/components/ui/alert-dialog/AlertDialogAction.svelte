@@ -34,13 +34,12 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		white-space: nowrap;
 		border-radius: var(--radius, 0.375rem);
-		font-size: 0.875rem;
-		font-weight: 500;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-sm);
 		height: 2.25rem;
 		padding: 0.5rem 1rem;
 		border: 1px solid transparent;
@@ -52,28 +51,23 @@
 	}
 
 	.alertdialog-action.tone-neutral {
-		background-color: hsl(var(--primary));
-		color: hsl(var(--primary-foreground));
+		background-color: var(--primary);
+		color: var(--primary-foreground);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 	}
 
 	.alertdialog-action.tone-neutral:hover {
-		background-color: hsl(var(--primary) / 0.9);
+		background-color: color-mix(in srgb, var(--primary) 90%, transparent);
 	}
 
 	.alertdialog-action.tone-critical {
-		background-color: hsl(var(--destructive));
-		color: hsl(var(--destructive-foreground));
+		background-color: var(--destructive);
+		color: var(--destructive-foreground);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 	}
 
 	.alertdialog-action.tone-critical:hover {
-		background-color: hsl(var(--destructive) / 0.9);
-	}
-
-	.alertdialog-action:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
+		background-color: color-mix(in srgb, var(--destructive) 90%, transparent);
 	}
 
 	.alertdialog-action:disabled {

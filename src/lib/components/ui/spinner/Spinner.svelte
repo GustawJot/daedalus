@@ -43,7 +43,7 @@
 
 <style>
 	.spinner {
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 		animation: spinner-rotate 1s linear infinite;
 	}
 

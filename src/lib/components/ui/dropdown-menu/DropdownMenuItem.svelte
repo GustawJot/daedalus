@@ -48,11 +48,11 @@
 		position: relative;
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		border-radius: calc(var(--radius, 0.375rem) - 2px);
 		padding: 0.375rem 0.5rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
 		cursor: pointer;
 		outline: none;
 		user-select: none;
@@ -63,8 +63,8 @@
 
 	.dropdown-item:hover,
 	.dropdown-item:focus-visible {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.dropdown-item:focus-visible {
@@ -72,13 +72,13 @@
 	}
 
 	.dropdown-item.tone-critical {
-		color: hsl(var(--destructive));
+		color: var(--destructive);
 	}
 
 	.dropdown-item.tone-critical:hover,
 	.dropdown-item.tone-critical:focus-visible {
-		background-color: hsl(var(--destructive));
-		color: hsl(var(--destructive-foreground));
+		background-color: var(--destructive);
+		color: var(--destructive-foreground);
 	}
 
 	.dropdown-item.disabled {

@@ -5,6 +5,7 @@
 	import Calendar from '../calendar/Calendar.svelte';
 
 	type Props = {
+		id?: string;
 		value?: Date | null;
 		placeholder?: string;
 		disabled?: boolean;
@@ -13,6 +14,7 @@
 	};
 
 	let {
+		id,
 		value = $bindable(null),
 		placeholder = 'Pick a date',
 		disabled = false,
@@ -30,7 +32,7 @@
 	let open = $state(false);
 </script>
 
-<div class="date-picker {className}">
+<div {id} class="date-picker {className}">
 	<Popover bind:open>
 		{#snippet children({ open: isOpen, close, toggle })}
 			<PopoverTrigger onclick={toggle}>
@@ -77,15 +79,14 @@
 	.trigger-button {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		height: 2.25rem;
 		padding: 0 0.75rem;
-		border: 1px solid hsl(var(--input));
+		border: 1px solid var(--input);
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
+		background-color: var(--background);
+		color: var(--foreground);
+		font-size: var(--text-sm);
 		cursor: pointer;
 		transition-property: border-color, box-shadow;
 		transition-duration: var(--transition-fast, 150ms);
@@ -94,11 +95,11 @@
 	}
 
 	.trigger-button:hover:not(.disabled) {
-		border-color: hsl(var(--ring));
+		border-color: var(--ring);
 	}
 
 	.trigger-button.placeholder {
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.trigger-button.disabled {
@@ -108,7 +109,7 @@
 
 	.calendar-icon {
 		flex-shrink: 0;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.trigger-text {

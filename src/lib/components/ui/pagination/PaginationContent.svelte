@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<ul class="pagination-content {className}">
+<ul {id} class="pagination-content {className}">
 	{#if children}{@render children()}{/if}
 </ul>
 
@@ -21,9 +23,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--space-1);
 		list-style: none;
-		margin: 0;
-		padding: 0;
 	}
 </style>

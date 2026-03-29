@@ -27,11 +27,10 @@
 <style>
 	.label {
 		display: inline-block;
-		font-size: 0.875rem;
-		font-weight: 500;
-		line-height: 1;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		color: hsl(var(--foreground));
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-none);
+		color: var(--foreground);
 		cursor: default;
 		user-select: none;
 		-webkit-user-select: none;

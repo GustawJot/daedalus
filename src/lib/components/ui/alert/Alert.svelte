@@ -30,72 +30,70 @@
 		position: relative;
 		width: 100%;
 		border-radius: var(--radius, 0.375rem);
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		padding: 1rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		line-height: 1.5;
+		font-size: var(--text-sm);
 	}
 
 	.tone-neutral {
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
-		border-color: hsl(var(--border));
+		background-color: var(--background);
+		color: var(--foreground);
+		border-color: var(--border);
 	}
 
 	.tone-critical {
-		background-color: hsl(var(--destructive) / 0.1);
-		color: hsl(var(--destructive));
-		border-color: hsl(var(--destructive) / 0.5);
+		background-color: color-mix(in srgb, var(--destructive) 10%, transparent);
+		color: var(--destructive);
+		border-color: color-mix(in srgb, var(--destructive) 50%, transparent);
 	}
 
 	.tone-critical :global(.alert-title) {
-		color: hsl(var(--destructive));
+		color: var(--destructive);
 	}
 
 	.tone-critical :global(.alert-description) {
-		color: hsl(var(--destructive) / 0.9);
+		color: color-mix(in srgb, var(--destructive) 90%, transparent);
 	}
 
 	.tone-success {
-		background-color: hsl(var(--success) / 0.1);
-		color: hsl(var(--success));
-		border-color: hsl(var(--success) / 0.5);
+		background-color: color-mix(in srgb, var(--success) 10%, transparent);
+		color: var(--success);
+		border-color: color-mix(in srgb, var(--success) 50%, transparent);
 	}
 
 	.tone-success :global(.alert-title) {
-		color: hsl(var(--success));
+		color: var(--success);
 	}
 
 	.tone-success :global(.alert-description) {
-		color: hsl(var(--success) / 0.9);
+		color: color-mix(in srgb, var(--success) 90%, transparent);
 	}
 
 	.tone-caution {
-		background-color: hsl(var(--caution) / 0.1);
-		color: hsl(var(--caution));
-		border-color: hsl(var(--caution) / 0.5);
+		background-color: color-mix(in srgb, var(--caution) 10%, transparent);
+		color: var(--caution);
+		border-color: color-mix(in srgb, var(--caution) 50%, transparent);
 	}
 
 	.tone-caution :global(.alert-title) {
-		color: hsl(var(--caution));
+		color: var(--caution);
 	}
 
 	.tone-caution :global(.alert-description) {
-		color: hsl(var(--caution) / 0.9);
+		color: color-mix(in srgb, var(--caution) 90%, transparent);
 	}
 
 	.tone-info {
-		background-color: hsl(var(--info) / 0.1);
-		color: hsl(var(--info));
-		border-color: hsl(var(--info) / 0.5);
+		background-color: color-mix(in srgb, var(--info) 10%, transparent);
+		color: var(--info);
+		border-color: color-mix(in srgb, var(--info) 50%, transparent);
 	}
 
 	.tone-info :global(.alert-title) {
-		color: hsl(var(--info));
+		color: var(--info);
 	}
 
 	.tone-info :global(.alert-description) {
-		color: hsl(var(--info) / 0.9);
+		color: color-mix(in srgb, var(--info) 90%, transparent);
 	}
 </style>

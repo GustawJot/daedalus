@@ -71,7 +71,6 @@
 		-webkit-appearance: none;
 		background: transparent;
 		outline: none;
-		margin: 0;
 	}
 
 	.slider:disabled {
@@ -81,27 +80,27 @@
 	/* Track — WebKit */
 	.slider::-webkit-slider-runnable-track {
 		height: 0.5rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-full);
 		background: linear-gradient(
 			to right,
-			hsl(var(--primary)) 0%,
-			hsl(var(--primary)) var(--slider-percentage, 0%),
-			hsl(var(--secondary)) var(--slider-percentage, 0%),
-			hsl(var(--secondary)) 100%
+			var(--primary) 0%,
+			var(--primary) var(--slider-percentage, 0%),
+			var(--secondary) var(--slider-percentage, 0%),
+			var(--secondary) 100%
 		);
 	}
 
 	/* Track — Firefox */
 	.slider::-moz-range-track {
 		height: 0.5rem;
-		border-radius: 9999px;
-		background: hsl(var(--secondary));
+		border-radius: var(--radius-full);
+		background: var(--secondary);
 	}
 
 	.slider::-moz-range-progress {
 		height: 0.5rem;
-		border-radius: 9999px;
-		background: hsl(var(--primary));
+		border-radius: var(--radius-full);
+		background: var(--primary);
 	}
 
 	/* Thumb — WebKit */
@@ -110,9 +109,9 @@
 		appearance: none;
 		width: 1.25rem;
 		height: 1.25rem;
-		border-radius: 9999px;
-		background-color: hsl(var(--background));
-		border: 2px solid hsl(var(--primary));
+		border-radius: var(--radius-full);
+		background-color: var(--background);
+		border: 2px solid var(--primary);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 		margin-top: -0.375rem;
 		cursor: pointer;
@@ -126,7 +125,7 @@
 	}
 
 	.slider:focus-visible::-webkit-slider-thumb {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 	}
 
@@ -134,9 +133,9 @@
 	.slider::-moz-range-thumb {
 		width: 1.25rem;
 		height: 1.25rem;
-		border-radius: 9999px;
-		background-color: hsl(var(--background));
-		border: 2px solid hsl(var(--primary));
+		border-radius: var(--radius-full);
+		background-color: var(--background);
+		border: 2px solid var(--primary);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 		cursor: pointer;
 		transition-property: box-shadow, transform;
@@ -149,7 +148,7 @@
 	}
 
 	.slider:focus-visible::-moz-range-thumb {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 	}
 </style>

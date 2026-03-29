@@ -44,8 +44,7 @@
 <style>
 	.radio-group {
 		display: flex;
-		gap: 0.5rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		gap: var(--space-2);
 	}
 
 	.radio-group.vertical {

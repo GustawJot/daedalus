@@ -2,7 +2,7 @@
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
 	type Props = Omit<HTMLInputAttributes, 'value'> & {
-		value?: string;
+		value?: string | number;
 		type?: string;
 		placeholder?: string;
 		disabled?: boolean;
@@ -37,7 +37,7 @@
 	aria-required={required || undefined}
 	aria-disabled={disabled || undefined}
 	{...restProps}
-/>
+/>/
 
 <style>
 	.input {
@@ -45,27 +45,25 @@
 		width: 100%;
 		height: 2.25rem;
 		border-radius: var(--radius, 0.375rem);
-		border: 1px solid hsl(var(--input));
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		border: 1px solid var(--input);
+		background-color: var(--background);
+		color: var(--foreground);
 		padding: 0.5rem 0.75rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
 		transition-property: border-color, box-shadow;
 		transition-duration: var(--transition-fast, 150ms);
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		outline: none;
-		box-sizing: border-box;
 	}
 
 	.input::placeholder {
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.input:focus-visible {
-		border-color: hsl(var(--ring));
-		box-shadow: 0 0 0 1px hsl(var(--ring));
+		border-color: var(--ring);
+		box-shadow: 0 0 0 1px var(--ring);
 	}
 
 	.input:disabled {
@@ -87,6 +85,6 @@
 	.input[type='file'] {
 		border: none;
 		padding: 0;
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 	}
 </style>

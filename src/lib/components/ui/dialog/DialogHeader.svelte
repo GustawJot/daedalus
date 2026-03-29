@@ -2,14 +2,15 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
-	let { children, class: className = '' }: Props = $props();
+	let { id, children, class: className = '' }: Props = $props();
 </script>
 
-<div class="dialog-header {className}">
+<div {id} class="dialog-header {className}">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -17,7 +18,7 @@
 	.dialog-header {
 		display: flex;
 		flex-direction: column;
-		gap: 0.375rem;
+		gap: var(--space-1-5);
 		text-align: center;
 	}
 

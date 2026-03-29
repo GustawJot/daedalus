@@ -21,10 +21,9 @@
 <style>
 	.alert-title {
 		margin: 0 0 0.25rem 0;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-weight: 600;
-		font-size: 0.875rem;
-		line-height: 1.25;
+		font-weight: var(--font-semibold);
+		font-size: var(--text-sm);
+		line-height: var(--leading-tight);
 		letter-spacing: -0.01em;
 		color: inherit;
 	}

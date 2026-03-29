@@ -2,12 +2,14 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		open = false,
 		children,
 		class: className = ''
@@ -15,7 +17,7 @@
 </script>
 
 {#if open}
-	<div class="select-content {className}" role="listbox">
+	<div {id} class="select-content {className}" role="listbox">
 		{#if children}
 			{@render children()}
 		{/if}
@@ -33,8 +35,8 @@
 		max-height: 15rem;
 		overflow-y: auto;
 		border-radius: var(--radius, 0.375rem);
-		border: 1px solid hsl(var(--border));
-		background-color: hsl(var(--background));
+		border: 1px solid var(--border);
+		background-color: var(--background);
 		padding: 0.25rem;
 		box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1));
 		animation: select-content-in var(--transition-fast, 150ms) cubic-bezier(0.4, 0, 0.2, 1);

@@ -40,24 +40,21 @@
 		justify-content: center;
 		text-align: center;
 		padding: 2.5rem 1rem;
-		gap: 0.5rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		gap: var(--space-2);
 	}
 
 	.empty-title {
-		font-size: 1.125rem;
-		font-weight: 600;
-		line-height: 1.75rem;
-		color: hsl(var(--foreground));
-		margin: 0;
+		font-size: var(--text-lg);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-body);
+		color: var(--foreground);
 	}
 
 	.empty-description {
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
+		color: var(--muted-foreground);
 		max-width: 28rem;
-		margin: 0;
 	}
 
 	.empty-content {

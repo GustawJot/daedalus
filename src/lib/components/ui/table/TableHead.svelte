@@ -24,9 +24,8 @@
 		padding: 0 1rem;
 		text-align: left;
 		vertical-align: middle;
-		font-weight: 500;
-		color: hsl(var(--muted-foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-weight: var(--font-medium);
+		color: var(--muted-foreground);
 		white-space: nowrap;
 	}
 

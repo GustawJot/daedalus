@@ -2,14 +2,15 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
-	let { children, class: className = '' }: Props = $props();
+	let { id, children, class: className = '' }: Props = $props();
 </script>
 
-<div class="drawer-header {className}">
+<div {id} class="drawer-header {className}">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -17,7 +18,7 @@
 	.drawer-header {
 		display: flex;
 		flex-direction: column;
-		gap: 0.375rem;
+		gap: var(--space-1-5);
 		text-align: center;
 		padding: 0.5rem 0;
 	}

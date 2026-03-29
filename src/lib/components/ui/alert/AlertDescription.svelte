@@ -20,9 +20,7 @@
 
 <style>
 	.alert-description {
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		line-height: 1.5;
+		font-size: var(--text-sm);
 		color: inherit;
 		opacity: 0.9;
 	}

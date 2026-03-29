@@ -4,19 +4,21 @@
 	export type ScrollOrientation = 'vertical' | 'horizontal' | 'both';
 
 	type Props = {
+		id?: string;
 		orientation?: ScrollOrientation;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		orientation = 'vertical',
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="scroll-area orientation-{orientation} {className}">
+<div {id} class="scroll-area orientation-{orientation} {className}">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -24,7 +26,6 @@
 	.scroll-area {
 		position: relative;
 		width: 100%;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.orientation-vertical {
@@ -49,18 +50,18 @@
 
 	.scroll-area::-webkit-scrollbar-track {
 		background: transparent;
-		border-radius: 9999px;
+		border-radius: var(--radius-full);
 	}
 
 	.scroll-area::-webkit-scrollbar-thumb {
-		background-color: hsl(var(--border));
-		border-radius: 9999px;
+		background-color: var(--border);
+		border-radius: var(--radius-full);
 		border: 2px solid transparent;
 		background-clip: content-box;
 	}
 
 	.scroll-area::-webkit-scrollbar-thumb:hover {
-		background-color: hsl(var(--muted-foreground) / 0.5);
+		background-color: color-mix(in srgb, var(--muted-foreground) 50%, transparent);
 	}
 
 	.scroll-area::-webkit-scrollbar-corner {
@@ -70,6 +71,6 @@
 	/* Firefox scrollbar styling */
 	.scroll-area {
 		scrollbar-width: thin;
-		scrollbar-color: hsl(var(--border)) transparent;
+		scrollbar-color: var(--border) transparent;
 	}
 </style>

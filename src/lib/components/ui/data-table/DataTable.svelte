@@ -11,6 +11,7 @@
 	export type SortDirection = 'asc' | 'desc';
 
 	type Props<T = Record<string, any>> = {
+		id?: string;
 		columns: DataTableColumn<T>[];
 		data: T[];
 		sortKey?: string;
@@ -20,6 +21,7 @@
 	};
 
 	let {
+		id,
 		columns,
 		data,
 		sortKey = $bindable(''),
@@ -67,7 +69,7 @@
 	}
 </script>
 
-<div class="data-table-wrapper {className}">
+<div {id} class="data-table-wrapper {className}">
 	<table class="data-table">
 		<thead>
 			<tr>
@@ -140,27 +142,26 @@
 	.data-table-wrapper {
 		width: 100%;
 		overflow-x: auto;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.data-table {
 		width: 100%;
 		border-collapse: collapse;
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 	}
 
 	thead {
-		background-color: hsl(var(--muted) / 0.5);
+		background-color: color-mix(in srgb, var(--muted) 50%, transparent);
 	}
 
 	.header-cell {
 		text-align: left;
 		padding: 0.75rem 1rem;
-		font-weight: 500;
-		color: hsl(var(--muted-foreground));
-		border-bottom: 1px solid hsl(var(--border));
+		font-weight: var(--font-medium);
+		color: var(--muted-foreground);
+		border-bottom: 1px solid var(--border);
 		white-space: nowrap;
 	}
 
@@ -171,26 +172,25 @@
 	.header-button {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--space-1);
 		width: 100%;
 		padding: 0.75rem 1rem;
 		background: none;
 		border: none;
-		color: hsl(var(--muted-foreground));
-		font-family: inherit;
+		color: var(--muted-foreground);
 		font-size: inherit;
-		font-weight: 500;
+		font-weight: var(--font-medium);
 		cursor: pointer;
 		text-align: left;
 		transition: color var(--transition-fast, 150ms) ease;
 	}
 
 	.header-button:hover {
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 	}
 
 	.header-button:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: -2px;
 	}
 
@@ -205,12 +205,12 @@
 	}
 
 	.data-row {
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 		transition: background-color var(--transition-fast, 150ms) ease;
 	}
 
 	.data-row:hover {
-		background-color: hsl(var(--muted) / 0.3);
+		background-color: color-mix(in srgb, var(--muted) 30%, transparent);
 	}
 
 	.data-row:last-child {
@@ -219,17 +219,17 @@
 
 	.data-cell {
 		padding: 0.75rem 1rem;
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 		vertical-align: middle;
 	}
 
 	tbody :global(tr) {
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 		transition: background-color var(--transition-fast, 150ms) ease;
 	}
 
 	tbody :global(tr:hover) {
-		background-color: hsl(var(--muted) / 0.3);
+		background-color: color-mix(in srgb, var(--muted) 30%, transparent);
 	}
 
 	tbody :global(tr:last-child) {
@@ -238,7 +238,7 @@
 
 	tbody :global(td) {
 		padding: 0.75rem 1rem;
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 		vertical-align: middle;
 	}
 </style>

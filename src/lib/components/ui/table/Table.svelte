@@ -31,9 +31,8 @@
 		width: 100%;
 		caption-side: bottom;
 		border-collapse: collapse;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		color: hsl(var(--foreground));
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
+		color: var(--foreground);
 	}
 </style>

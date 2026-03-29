@@ -29,12 +29,11 @@
 	.badge {
 		display: inline-flex;
 		align-items: center;
-		border-radius: 9999px;
+		border-radius: var(--radius-full);
 		padding: 0.125rem 0.625rem;
-		font-size: 0.75rem;
-		font-weight: 600;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-xs);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-sm);
 		transition-property: background-color, color, border-color;
 		transition-duration: var(--transition-fast, 150ms);
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -42,115 +41,110 @@
 		white-space: nowrap;
 	}
 
-	.badge:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
-	}
-
 	/* ---- Variant: filled ---- */
 	.variant-filled.tone-neutral {
-		background-color: hsl(var(--primary));
-		color: hsl(var(--primary-foreground));
+		background-color: var(--primary);
+		color: var(--primary-foreground);
 	}
 
 	.variant-filled.tone-neutral:hover {
-		background-color: hsl(var(--primary) / 0.9);
+		background-color: color-mix(in srgb, var(--primary) 90%, transparent);
 	}
 
 	.variant-filled.tone-critical {
-		background-color: hsl(var(--destructive));
-		color: hsl(var(--destructive-foreground));
+		background-color: var(--destructive);
+		color: var(--destructive-foreground);
 	}
 
 	.variant-filled.tone-critical:hover {
-		background-color: hsl(var(--destructive) / 0.9);
+		background-color: color-mix(in srgb, var(--destructive) 90%, transparent);
 	}
 
 	.variant-filled.tone-success {
-		background-color: hsl(var(--success));
-		color: hsl(var(--success-foreground));
+		background-color: var(--success);
+		color: var(--success-foreground);
 	}
 
 	.variant-filled.tone-success:hover {
-		background-color: hsl(var(--success) / 0.9);
+		background-color: color-mix(in srgb, var(--success) 90%, transparent);
 	}
 
 	.variant-filled.tone-caution {
-		background-color: hsl(var(--caution));
-		color: hsl(var(--caution-foreground));
+		background-color: var(--caution);
+		color: var(--caution-foreground);
 	}
 
 	.variant-filled.tone-caution:hover {
-		background-color: hsl(var(--caution) / 0.9);
+		background-color: color-mix(in srgb, var(--caution) 90%, transparent);
 	}
 
 	.variant-filled.tone-info {
-		background-color: hsl(var(--info));
-		color: hsl(var(--info-foreground));
+		background-color: var(--info);
+		color: var(--info-foreground);
 	}
 
 	.variant-filled.tone-info:hover {
-		background-color: hsl(var(--info) / 0.9);
+		background-color: color-mix(in srgb, var(--info) 90%, transparent);
 	}
 
 	/* ---- Variant: tonal ---- */
 	.variant-tonal.tone-neutral {
-		background-color: hsl(var(--secondary));
-		color: hsl(var(--secondary-foreground));
+		background-color: var(--secondary);
+		color: var(--secondary-foreground);
 	}
 
 	.variant-tonal.tone-neutral:hover {
-		background-color: hsl(var(--secondary) / 0.8);
+		background-color: color-mix(in srgb, var(--secondary) 80%, transparent);
 	}
 
 	.variant-tonal.tone-critical {
-		background-color: hsl(var(--destructive) / 0.1);
-		color: hsl(var(--destructive));
+		background-color: color-mix(in srgb, var(--destructive) 10%, transparent);
+		color: var(--destructive);
 	}
 
 	.variant-tonal.tone-success {
-		background-color: hsl(var(--success) / 0.1);
-		color: hsl(var(--success));
+		background-color: color-mix(in srgb, var(--success) 10%, transparent);
+		color: var(--success);
 	}
 
 	.variant-tonal.tone-caution {
-		background-color: hsl(var(--caution) / 0.1);
-		color: hsl(var(--caution));
+		background-color: color-mix(in srgb, var(--caution) 10%, transparent);
+		color: var(--caution);
 	}
 
 	.variant-tonal.tone-info {
-		background-color: hsl(var(--info) / 0.1);
-		color: hsl(var(--info));
+		background-color: color-mix(in srgb, var(--info) 10%, transparent);
+		color: var(--info);
 	}
 
 	/* ---- Variant: outline ---- */
 	.variant-outline.tone-neutral {
 		background-color: transparent;
-		color: hsl(var(--foreground));
-		border-color: hsl(var(--border));
+		color: var(--foreground);
+		border-color: var(--border);
 	}
 
 	.variant-outline.tone-critical {
 		background-color: transparent;
-		color: hsl(var(--destructive));
-		border-color: hsl(var(--destructive) / 0.5);
+		color: var(--destructive);
+		border-color: color-mix(in srgb, var(--destructive) 50%, transparent);
 	}
 
 	.variant-outline.tone-success {
 		background-color: transparent;
-		color: hsl(var(--success));
-		border-color: hsl(var(--success) / 0.5);
+		color: var(--success);
+		border-color: color-mix(in srgb, var(--success) 50%, transparent);
 	}
 
 	.variant-outline.tone-caution {
 		background-color: transparent;
-		color: hsl(var(--caution));
-		border-color: hsl(var(--caution) / 0.5);
+		color: var(--caution);
+		border-color: color-mix(in srgb, var(--caution) 50%, transparent);
 	}
 
 	.variant-outline.tone-info {
 		background-color: transparent;
-		color: hsl(var(--info));
-		border-color: hsl(var(--info) / 0.5);
+		color: var(--info);
+		border-color: color-mix(in srgb, var(--info) 50%, transparent);
 	}
 </style>

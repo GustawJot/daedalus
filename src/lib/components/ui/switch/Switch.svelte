@@ -61,19 +61,13 @@
 		height: 1.5rem;
 		flex-shrink: 0;
 		cursor: pointer;
-		border-radius: 9999px;
+		border-radius: var(--radius-full);
 		border: 2px solid transparent;
-		padding: 0;
-		background-color: hsl(var(--input));
+		background-color: var(--input);
 		transition-property: background-color, box-shadow;
 		transition-duration: var(--transition-fast, 150ms);
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		outline: none;
-	}
-
-	.switch:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
 	}
 
 	.switch:disabled {
@@ -82,15 +76,15 @@
 	}
 
 	.switch.checked {
-		background-color: hsl(var(--primary));
+		background-color: var(--primary);
 	}
 
 	.switch-thumb {
 		display: block;
 		width: 1.25rem;
 		height: 1.25rem;
-		border-radius: 9999px;
-		background-color: hsl(var(--background));
+		border-radius: var(--radius-full);
+		background-color: var(--background);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 		transition-property: transform;
 		transition-duration: var(--transition-fast, 150ms);

@@ -59,7 +59,6 @@
 <style>
 	.accordion-trigger-heading {
 		display: flex;
-		margin: 0;
 		font-size: inherit;
 		font-weight: inherit;
 	}
@@ -70,11 +69,10 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: 1rem 0;
-		font-size: 0.875rem;
-		font-weight: 500;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		color: hsl(var(--foreground));
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-sm);
+		color: var(--foreground);
 		background: none;
 		border: none;
 		cursor: pointer;
@@ -89,7 +87,7 @@
 	}
 
 	.accordion-trigger:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 		border-radius: 2px;
 	}

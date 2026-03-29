@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		width?: string;
 		collapsedWidth?: string;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		open = $bindable(true),
 		width = '16rem',
 		collapsedWidth = '3.5rem',
@@ -19,6 +21,7 @@
 </script>
 
 <aside
+	{id}
 	class="sidebar {className}"
 	class:collapsed={!open}
 	style:--sidebar-width={width}
@@ -34,9 +37,8 @@
 		flex-direction: column;
 		width: var(--sidebar-width, 16rem);
 		height: 100%;
-		background-color: hsl(var(--background));
-		border-right: 1px solid hsl(var(--border));
-		font-family: var(--font-sans, system-ui, sans-serif);
+		background-color: var(--background);
+		border-right: 1px solid var(--border);
 		transition: width var(--transition-normal, 200ms) ease;
 		overflow: hidden;
 		flex-shrink: 0;

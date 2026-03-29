@@ -3,6 +3,7 @@
 	import DialogOverlay from '../dialog/DialogOverlay.svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		onclose?: () => void;
 		children?: Snippet;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		open = false,
 		onclose,
 		children,
@@ -92,6 +94,7 @@
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<div
 			bind:this={contentEl}
+			{id}
 			class="drawer-content {className}"
 			role="dialog"
 			aria-modal="true"
@@ -130,9 +133,9 @@
 		display: flex;
 		flex-direction: column;
 		max-height: 85vh;
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
-		border: 1px solid hsl(var(--border));
+		background-color: var(--background);
+		color: var(--foreground);
+		border: 1px solid var(--border);
 		border-bottom: none;
 		border-top-left-radius: calc(var(--radius, 0.5rem) * 2);
 		border-top-right-radius: calc(var(--radius, 0.5rem) * 2);
@@ -141,7 +144,6 @@
 		animation: drawer-slide-up var(--transition-normal, 200ms) ease-out;
 		outline: none;
 		overflow-y: auto;
-		font-family: var(--font-sans, system-ui, sans-serif);
 		touch-action: none;
 	}
 
@@ -170,7 +172,7 @@
 	.drawer-handle {
 		width: 3rem;
 		height: 0.25rem;
-		border-radius: 9999px;
-		background-color: hsl(var(--muted-foreground) / 0.3);
+		border-radius: var(--radius-full);
+		background-color: color-mix(in srgb, var(--muted-foreground) 30%, transparent);
 	}
 </style>

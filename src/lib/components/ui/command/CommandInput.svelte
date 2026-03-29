@@ -1,18 +1,20 @@
 <script lang="ts">
 	type Props = {
+		id?: string;
 		value?: string;
 		placeholder?: string;
 		class?: string;
 	};
 
 	let {
+		id,
 		value = $bindable(''),
 		placeholder = 'Type a command or search...',
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="command-input-wrapper {className}">
+<div {id} class="command-input-wrapper {className}">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="16"
@@ -45,28 +47,27 @@
 	.command-input-wrapper {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		padding: 0.75rem;
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 	}
 
 	.search-icon {
 		flex-shrink: 0;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.command-input {
 		flex: 1;
 		border: none;
 		background: transparent;
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		line-height: 1.5;
+		color: var(--foreground);
+		font-size: var(--text-sm);
+		line-height: var(--leading-normal);
 		outline: none;
 	}
 
 	.command-input::placeholder {
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 </style>

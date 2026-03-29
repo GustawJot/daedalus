@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		active?: boolean;
 		disabled?: boolean;
 		onclick?: (e: MouseEvent) => void;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		active = false,
 		disabled = false,
 		onclick,
@@ -20,6 +22,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
+	{id}
 	class="item {className}"
 	class:active
 	class:disabled
@@ -45,12 +48,11 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: 0.75rem;
+		gap: var(--space-3);
 		padding: 0.5rem 0.75rem;
 		border-radius: var(--radius, 0.375rem);
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		color: hsl(var(--foreground));
+		font-size: var(--text-sm);
+		color: var(--foreground);
 		cursor: pointer;
 		transition-property: background-color, color;
 		transition-duration: var(--transition-fast, 150ms);
@@ -61,19 +63,19 @@
 	}
 
 	.item:hover:not(.disabled) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.item:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: -2px;
 	}
 
 	.item.active {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
-		font-weight: 500;
+		background-color: var(--accent);
+		color: var(--accent-foreground);
+		font-weight: var(--font-medium);
 	}
 
 	.item.disabled {

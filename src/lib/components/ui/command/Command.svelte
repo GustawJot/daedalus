@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="command {className}" role="dialog" aria-label="Command palette">
+<div {id} class="command {className}" role="dialog" aria-label="Command palette">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -22,10 +24,9 @@
 		flex-direction: column;
 		width: 100%;
 		overflow: hidden;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.5rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
+		background-color: var(--background);
+		color: var(--foreground);
 	}
 </style>

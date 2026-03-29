@@ -12,6 +12,7 @@
 	};
 
 	type Props = {
+		id?: string;
 		page?: number;
 		totalPages: number;
 		siblingCount?: number;
@@ -20,6 +21,7 @@
 	};
 
 	let {
+		id,
 		page = $bindable(1),
 		totalPages,
 		siblingCount = 1,
@@ -73,7 +75,7 @@
 	});
 </script>
 
-<nav aria-label="Pagination" class="pagination {className}">
+<nav {id} aria-label="Pagination" class="pagination {className}">
 	{#if children}
 		{@render children({ pages, page, setPage, canPrev, canNext })}
 	{/if}
@@ -83,6 +85,5 @@
 	.pagination {
 		display: flex;
 		justify-content: center;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 </style>

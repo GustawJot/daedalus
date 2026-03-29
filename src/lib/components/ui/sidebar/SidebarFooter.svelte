@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="sidebar-footer {className}">
+<div {id} class="sidebar-footer {className}">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -21,7 +23,7 @@
 		display: flex;
 		align-items: center;
 		padding: 0.75rem;
-		border-top: 1px solid hsl(var(--border));
+		border-top: 1px solid var(--border);
 		flex-shrink: 0;
 		min-height: 3.5rem;
 		overflow: hidden;

@@ -21,6 +21,5 @@
 <style>
 	.accordion {
 		width: 100%;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 </style>

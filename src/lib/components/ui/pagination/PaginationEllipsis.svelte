@@ -1,14 +1,16 @@
 <script lang="ts">
 	type Props = {
+		id?: string;
 		class?: string;
 	};
 
 	let {
+		id,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<li>
+<li {id}>
 	<span class="pagination-ellipsis {className}" aria-hidden="true">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +38,7 @@
 		justify-content: center;
 		min-width: 2.25rem;
 		height: 2.25rem;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.sr-only {

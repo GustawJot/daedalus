@@ -32,18 +32,17 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		white-space: nowrap;
 		border-radius: var(--radius, 0.375rem);
-		font-size: 0.875rem;
-		font-weight: 500;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-sm);
 		height: 2.25rem;
 		padding: 0.5rem 1rem;
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
-		border: 1px solid hsl(var(--input));
+		background-color: var(--background);
+		color: var(--foreground);
+		border: 1px solid var(--input);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 		cursor: pointer;
 		transition-property: background-color, color, border-color, box-shadow, opacity;
@@ -53,13 +52,8 @@
 	}
 
 	.alertdialog-cancel:hover {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
-	}
-
-	.alertdialog-cancel:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.alertdialog-cancel:disabled {

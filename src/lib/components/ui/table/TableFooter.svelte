@@ -20,9 +20,9 @@
 
 <style>
 	.table-footer {
-		border-top: 1px solid hsl(var(--border));
-		background-color: hsl(var(--muted) / 0.5);
-		font-weight: 500;
+		border-top: 1px solid var(--border);
+		background-color: color-mix(in srgb, var(--muted) 50%, transparent);
+		font-weight: var(--font-medium);
 	}
 
 	.table-footer :global(tr:last-child) {

@@ -2,25 +2,24 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
-	let { children, class: className = '' }: Props = $props();
+	let { id, children, class: className = '' }: Props = $props();
 </script>
 
-<h2 class="sheet-title {className}">
+<h2 {id} class="sheet-title {className}">
 	{#if children}{@render children()}{/if}
 </h2>
 
 <style>
 	.sheet-title {
-		font-size: 1.125rem;
-		font-weight: 600;
-		line-height: 1.4;
+		font-size: var(--text-lg);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-snug);
 		letter-spacing: -0.01em;
-		color: hsl(var(--foreground));
-		margin: 0;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		color: var(--foreground);
 	}
 </style>

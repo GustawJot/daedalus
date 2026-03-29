@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="command-empty {className}">
+<div {id} class="command-empty {className}">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -20,8 +22,7 @@
 	.command-empty {
 		padding: 1.5rem;
 		text-align: center;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-sm);
+		color: var(--muted-foreground);
 	}
 </style>

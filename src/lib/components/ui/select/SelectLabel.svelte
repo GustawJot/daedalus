@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="select-label {className}">
+<div {id} class="select-label {className}">
 	{#if children}
 		{@render children()}
 	{/if}
@@ -21,10 +23,10 @@
 <style>
 	.select-label {
 		padding: 0.375rem 0.5rem 0.375rem 2rem;
-		font-size: 0.75rem;
-		font-weight: 600;
-		line-height: 1.25rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-xs);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-sm);
+		color: var(--muted-foreground);
 		user-select: none;
 		-webkit-user-select: none;
 	}

@@ -4,6 +4,7 @@
 	import DialogOverlay from '../dialog/DialogOverlay.svelte';
 
 	type Props = {
+		id?: string;
 		side?: SheetSide;
 		open?: boolean;
 		onclose?: () => void;
@@ -12,6 +13,7 @@
 	};
 
 	let {
+		id,
 		side = 'right',
 		open = false,
 		onclose,
@@ -70,6 +72,7 @@
 		<DialogOverlay onclick={() => onclose?.()} />
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<div
+			{id}
 			bind:this={contentEl}
 			class="sheet-content side-{side} {className}"
 			role="dialog"
@@ -99,15 +102,14 @@
 		z-index: var(--z-modal, 500);
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
-		border: 1px solid hsl(var(--border));
+		gap: var(--space-4);
+		background-color: var(--background);
+		color: var(--foreground);
+		border: 1px solid var(--border);
 		padding: 1.5rem;
 		box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
 		outline: none;
 		overflow-y: auto;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.side-right {
@@ -116,7 +118,7 @@
 		bottom: 0;
 		width: 75%;
 		max-width: 24rem;
-		border-left: 1px solid hsl(var(--border));
+		border-left: 1px solid var(--border);
 		animation: slide-in-right var(--transition-normal, 200ms) ease-out;
 	}
 
@@ -126,7 +128,7 @@
 		bottom: 0;
 		width: 75%;
 		max-width: 24rem;
-		border-right: 1px solid hsl(var(--border));
+		border-right: 1px solid var(--border);
 		animation: slide-in-left var(--transition-normal, 200ms) ease-out;
 	}
 
@@ -135,7 +137,7 @@
 		left: 0;
 		right: 0;
 		max-height: 75vh;
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 		animation: slide-in-top var(--transition-normal, 200ms) ease-out;
 	}
 
@@ -144,7 +146,7 @@
 		left: 0;
 		right: 0;
 		max-height: 75vh;
-		border-top: 1px solid hsl(var(--border));
+		border-top: 1px solid var(--border);
 		animation: slide-in-bottom var(--transition-normal, 200ms) ease-out;
 	}
 
@@ -177,11 +179,10 @@
 		justify-content: center;
 		width: 1.5rem;
 		height: 1.5rem;
-		padding: 0;
 		border: none;
 		border-radius: var(--radius, 0.25rem);
 		background: transparent;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		cursor: pointer;
 		opacity: 0.7;
 		transition: opacity var(--transition-fast, 150ms) ease;
@@ -191,8 +192,4 @@
 		opacity: 1;
 	}
 
-	.sheet-close:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
-	}
 </style>

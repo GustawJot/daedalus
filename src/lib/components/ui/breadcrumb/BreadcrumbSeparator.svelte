@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<li role="presentation" aria-hidden="true" class="breadcrumb-separator {className}">
+<li {id} role="presentation" aria-hidden="true" class="breadcrumb-separator {className}">
 	{#if children}
 		{@render children()}
 	{:else}
@@ -36,7 +38,7 @@
 	.breadcrumb-separator {
 		display: inline-flex;
 		align-items: center;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.breadcrumb-separator svg {

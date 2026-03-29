@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		value: string;
 		disabled?: boolean;
 		selected?: boolean;
@@ -11,6 +12,7 @@
 	};
 
 	let {
+		id,
 		value,
 		disabled = false,
 		selected = false,
@@ -33,6 +35,7 @@
 </script>
 
 <div
+	{id}
 	class="select-item {className}"
 	class:disabled
 	class:selected
@@ -72,16 +75,16 @@
 	.select-item {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		padding: 0.375rem 0.5rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
 		border-radius: calc(var(--radius, 0.375rem) - 2px);
 		cursor: pointer;
 		outline: none;
 		user-select: none;
 		-webkit-user-select: none;
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 		transition-property: background-color, color;
 		transition-duration: var(--transition-fast, 150ms);
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -89,8 +92,8 @@
 
 	.select-item:hover:not(.disabled),
 	.select-item:focus-visible:not(.disabled) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.select-item.disabled {
@@ -100,7 +103,7 @@
 	}
 
 	.select-item.selected {
-		font-weight: 500;
+		font-weight: var(--font-medium);
 	}
 
 	.select-item-indicator {
@@ -115,7 +118,7 @@
 	.select-item-check {
 		width: 0.875rem;
 		height: 0.875rem;
-		color: hsl(var(--primary));
+		color: var(--primary);
 	}
 
 	.select-item-text {

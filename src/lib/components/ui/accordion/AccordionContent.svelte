@@ -68,10 +68,8 @@
 <style>
 	.accordion-content {
 		overflow: hidden;
-		font-size: 0.875rem;
-		line-height: 1.5;
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		color: var(--foreground);
 	}
 
 	.accordion-content.animating {

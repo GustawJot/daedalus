@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<li class="breadcrumb-item {className}">
+<li {id} class="breadcrumb-item {className}">
 	{#if children}{@render children()}{/if}
 </li>
 
@@ -20,7 +22,6 @@
 	.breadcrumb-item {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.375rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		gap: var(--space-1-5);
 	}
 </style>

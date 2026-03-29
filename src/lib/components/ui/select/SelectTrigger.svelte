@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		placeholder?: string;
 		disabled?: boolean;
 		value?: string;
@@ -11,6 +12,7 @@
 	};
 
 	let {
+		id,
 		placeholder = 'Select...',
 		disabled = false,
 		value,
@@ -21,6 +23,7 @@
 </script>
 
 <button
+	{id}
 	type="button"
 	class="select-trigger {className}"
 	{disabled}
@@ -55,18 +58,17 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		width: 100%;
 		min-width: 10rem;
 		height: 2.25rem;
 		padding: 0.5rem 0.75rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
 		border-radius: var(--radius, 0.375rem);
-		border: 1px solid hsl(var(--input));
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		border: 1px solid var(--input);
+		background-color: var(--background);
+		color: var(--foreground);
 		cursor: pointer;
 		outline: none;
 		white-space: nowrap;
@@ -76,11 +78,6 @@
 		transition-property: border-color, box-shadow;
 		transition-duration: var(--transition-fast, 150ms);
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	}
-
-	.select-trigger:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
 	}
 
 	.select-trigger:disabled {
@@ -96,13 +93,13 @@
 	}
 
 	.select-trigger-text.placeholder {
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.select-chevron {
 		width: 1rem;
 		height: 1rem;
 		flex-shrink: 0;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 </style>

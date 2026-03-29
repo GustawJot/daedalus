@@ -4,6 +4,7 @@
 	export type DropdownAlign = 'start' | 'center' | 'end';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		align?: DropdownAlign;
 		onclose?: () => void;
@@ -12,6 +13,7 @@
 	};
 
 	let {
+		id,
 		open = false,
 		align = 'start',
 		onclose,
@@ -90,6 +92,7 @@
 {#if open}
 	<div
 		bind:this={contentEl}
+		{id}
 		class="dropdown-content align-{align} {className}"
 		role="menu"
 		tabindex="-1"
@@ -106,14 +109,13 @@
 		top: 100%;
 		margin-top: 0.25rem;
 		min-width: 8rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		background-color: var(--background);
+		color: var(--foreground);
 		padding: 0.25rem;
 		box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
 		outline: none;
-		font-family: var(--font-sans, system-ui, sans-serif);
 		animation: dropdown-in var(--transition-fast, 150ms) ease-out;
 		overflow: hidden;
 	}

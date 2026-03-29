@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		href?: string;
 		active?: boolean;
 		disabled?: boolean;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		href,
 		active = false,
 		disabled = false,
@@ -20,6 +22,7 @@
 
 {#if href && !disabled}
 	<a
+		{id}
 		{href}
 		class="sidebar-item {className}"
 		class:active
@@ -29,6 +32,7 @@
 	</a>
 {:else}
 	<div
+		{id}
 		class="sidebar-item {className}"
 		class:active
 		class:disabled
@@ -44,11 +48,11 @@
 	.sidebar-item {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: var(--space-3);
 		padding: 0.5rem 0.75rem;
 		border-radius: var(--radius, 0.375rem);
-		font-size: 0.875rem;
-		color: hsl(var(--foreground));
+		font-size: var(--text-sm);
+		color: var(--foreground);
 		text-decoration: none;
 		cursor: pointer;
 		transition-property: background-color, color;
@@ -60,19 +64,19 @@
 	}
 
 	.sidebar-item:hover:not(.disabled) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.sidebar-item:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: -2px;
 	}
 
 	.sidebar-item.active {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
-		font-weight: 500;
+		background-color: var(--accent);
+		color: var(--accent-foreground);
+		font-weight: var(--font-medium);
 	}
 
 	.sidebar-item.disabled {

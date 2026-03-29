@@ -50,17 +50,16 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		font-size: 0.875rem;
-		font-weight: 500;
-		line-height: 1.25rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		gap: var(--space-2);
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-sm);
 		border-radius: var(--radius, 0.375rem);
 		cursor: pointer;
 		outline: none;
 		border: 1px solid transparent;
 		background-color: transparent;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		transition-property: background-color, color, border-color, box-shadow;
 		transition-duration: var(--transition-fast, 150ms);
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,13 +68,8 @@
 	}
 
 	.toggle:hover:not(:disabled) {
-		background-color: hsl(var(--muted));
-		color: hsl(var(--muted-foreground));
-	}
-
-	.toggle:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
+		background-color: var(--muted);
+		color: var(--muted-foreground);
 	}
 
 	.toggle:disabled {
@@ -84,25 +78,25 @@
 	}
 
 	.toggle.pressed {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	/* Variant: outline */
 	.toggle.variant-outline {
-		border-color: hsl(var(--input));
+		border-color: var(--input);
 		background-color: transparent;
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
 	}
 
 	.toggle.variant-outline:hover:not(:disabled) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.toggle.variant-outline.pressed {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	/* Size: md */
@@ -115,13 +109,13 @@
 	.toggle.size-sm {
 		height: 2rem;
 		padding: 0.375rem 0.625rem;
-		font-size: 0.8125rem;
+		font-size: var(--text-sm);
 	}
 
 	/* Size: lg */
 	.toggle.size-lg {
 		height: 2.75rem;
 		padding: 0.5rem 1.25rem;
-		font-size: 1rem;
+		font-size: var(--text-base);
 	}
 </style>

@@ -22,7 +22,7 @@
 	.card-header {
 		display: flex;
 		flex-direction: column;
-		gap: 0.375rem;
+		gap: var(--space-1-5);
 		padding: 1.5rem;
 	}
 </style>

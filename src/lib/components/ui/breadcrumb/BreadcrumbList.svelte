@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<ol class="breadcrumb-list {className}">
+<ol {id} class="breadcrumb-list {className}">
 	{#if children}{@render children()}{/if}
 </ol>
 
@@ -21,12 +23,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 0.375rem;
+		gap: var(--space-1-5);
 		list-style: none;
-		margin: 0;
-		padding: 0;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-sm);
+		color: var(--muted-foreground);
 	}
 </style>

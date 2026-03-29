@@ -2,11 +2,13 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		children?: Snippet<[{ open: boolean; close: () => void; toggle: () => void }]>;
 	};
 
 	let {
+		id,
 		open = $bindable(false),
 		children
 	}: Props = $props();
@@ -20,7 +22,7 @@
 	}
 </script>
 
-<div class="popover-wrapper">
+<div {id} class="popover-wrapper">
 	{#if children}
 		{@render children({ open, close, toggle })}
 	{/if}

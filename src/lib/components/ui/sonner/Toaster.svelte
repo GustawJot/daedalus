@@ -10,12 +10,14 @@
 		| 'bottom-center';
 
 	type Props = {
+		id?: string;
 		position?: ToastPosition;
 		duration?: number;
 		class?: string;
 	};
 
 	let {
+		id,
 		position = 'bottom-right',
 		duration = 5000,
 		class: className = ''
@@ -64,7 +66,7 @@
 	}
 </script>
 
-<div class="toaster position-{position} {className}" aria-live="polite" aria-relevant="additions">
+<div {id} class="toaster position-{position} {className}" aria-live="polite" aria-relevant="additions">
 	{#each toasts as t (t.id)}
 		<div
 			class="toast toast-{t.type}"
@@ -114,12 +116,11 @@
 		z-index: 9999;
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		max-width: 24rem;
 		width: 100%;
 		pointer-events: none;
 		padding: 1rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.position-top-left {
@@ -160,14 +161,14 @@
 	.toast {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		padding: 0.75rem 1rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		background-color: var(--background);
+		color: var(--foreground);
 		box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 		pointer-events: auto;
 		animation: toast-enter 0.3s ease-out;
 	}
@@ -199,15 +200,15 @@
 	}
 
 	.toast-success {
-		border-color: hsl(142 71% 45% / 0.3);
+		border-color: color-mix(in srgb, var(--success) 30%, transparent);
 	}
 
 	.toast-error {
-		border-color: hsl(var(--destructive) / 0.3);
+		border-color: color-mix(in srgb, var(--destructive) 30%, transparent);
 	}
 
 	.toast-info {
-		border-color: hsl(var(--primary) / 0.3);
+		border-color: color-mix(in srgb, var(--primary) 30%, transparent);
 	}
 
 	.toast-icon {
@@ -217,20 +218,20 @@
 	}
 
 	.toast-icon-success {
-		color: hsl(142 71% 45%);
+		color: var(--success);
 	}
 
 	.toast-icon-error {
-		color: hsl(var(--destructive));
+		color: var(--destructive);
 	}
 
 	.toast-icon-info {
-		color: hsl(var(--primary));
+		color: var(--primary);
 	}
 
 	.toast-message {
 		flex: 1;
-		line-height: 1.4;
+		line-height: var(--leading-snug);
 	}
 
 	.toast-close {
@@ -243,7 +244,7 @@
 		border: none;
 		border-radius: 2px;
 		background: transparent;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		cursor: pointer;
 		opacity: 0.5;
 		transition: opacity var(--transition-fast, 150ms) ease;
@@ -254,7 +255,7 @@
 	}
 
 	.toast-close:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 		opacity: 1;
 	}

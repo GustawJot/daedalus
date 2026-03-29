@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '$lib/styles/theme.css';
+	import '$lib/styles/daedalus.css';
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();

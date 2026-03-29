@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		value?: Date | null;
 		month?: Date;
 		minDate?: Date | null;
@@ -12,6 +13,7 @@
 	};
 
 	let {
+		id,
 		value = $bindable(null),
 		month = $bindable(new Date()),
 		minDate = null,
@@ -159,7 +161,7 @@
 	}
 </script>
 
-<div class="calendar {className}" role="application" aria-label="Calendar">
+<div {id} class="calendar {className}" role="application" aria-label="Calendar">
 	<div class="calendar-header">
 		<button
 			type="button"
@@ -232,10 +234,9 @@
 	.calendar {
 		width: fit-content;
 		padding: 0.75rem;
-		background-color: hsl(var(--background));
-		border: 1px solid hsl(var(--border));
+		background-color: var(--background);
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
-		font-family: var(--font-sans, system-ui, sans-serif);
 		user-select: none;
 		-webkit-user-select: none;
 	}
@@ -248,9 +249,9 @@
 	}
 
 	.calendar-title {
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: hsl(var(--foreground));
+		font-size: var(--text-sm);
+		font-weight: var(--font-semibold);
+		color: var(--foreground);
 	}
 
 	.nav-button {
@@ -259,28 +260,23 @@
 		justify-content: center;
 		width: 1.75rem;
 		height: 1.75rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
 		background-color: transparent;
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 		cursor: pointer;
 		transition-property: background-color, color;
 		transition-duration: var(--transition-fast, 150ms);
 	}
 
 	.nav-button:hover:not(:disabled) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.nav-button:disabled {
 		opacity: 0.5;
 		pointer-events: none;
-	}
-
-	.nav-button:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
 	}
 
 	.calendar-grid {
@@ -291,14 +287,13 @@
 	.day-header {
 		width: 2.25rem;
 		height: 2rem;
-		font-size: 0.75rem;
-		font-weight: 500;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-xs);
+		font-weight: var(--font-medium);
+		color: var(--muted-foreground);
 		text-align: center;
 	}
 
 	td {
-		padding: 0;
 		text-align: center;
 	}
 
@@ -311,38 +306,32 @@
 		border: none;
 		border-radius: var(--radius, 0.375rem);
 		background-color: transparent;
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
+		color: var(--foreground);
+		font-size: var(--text-sm);
 		cursor: pointer;
 		transition-property: background-color, color;
 		transition-duration: var(--transition-fast, 150ms);
 	}
 
 	.day-cell:hover:not(:disabled):not(.selected) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
-	}
-
-	.day-cell:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.day-cell.today:not(.selected) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
-		font-weight: 600;
+		background-color: var(--accent);
+		color: var(--accent-foreground);
+		font-weight: var(--font-semibold);
 	}
 
 	.day-cell.selected {
-		background-color: hsl(var(--primary));
-		color: hsl(var(--primary-foreground));
-		font-weight: 600;
+		background-color: var(--primary);
+		color: var(--primary-foreground);
+		font-weight: var(--font-semibold);
 	}
 
 	.day-cell.outside {
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		opacity: 0.5;
 	}
 

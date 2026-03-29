@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		value?: string;
 		checked?: boolean;
 		onclick?: () => void;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		value = '',
 		checked = false,
 		onclick,
@@ -27,6 +29,7 @@
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div
+	{id}
 	class="dropdown-radio-item {className}"
 	role="menuitemradio"
 	aria-checked={checked}
@@ -49,12 +52,12 @@
 		position: relative;
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		border-radius: calc(var(--radius, 0.375rem) - 2px);
 		padding: 0.375rem 0.5rem;
 		padding-left: 2rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
 		cursor: pointer;
 		outline: none;
 		user-select: none;
@@ -65,8 +68,8 @@
 
 	.dropdown-radio-item:hover,
 	.dropdown-radio-item:focus-visible {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.dropdown-radio-item:focus-visible {

@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		value?: string;
 		disabled?: boolean;
 		onselect?: (value: string) => void;
@@ -11,6 +12,7 @@
 	};
 
 	let {
+		id,
 		value = '',
 		disabled = false,
 		onselect,
@@ -35,6 +37,7 @@
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div
+	{id}
 	class="command-item {className}"
 	class:disabled
 	role="option"
@@ -53,11 +56,10 @@
 	.command-item {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		padding: 0.375rem 0.5rem;
 		border-radius: calc(var(--radius, 0.375rem) - 2px);
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 		cursor: pointer;
 		outline: none;
 		transition-property: background-color, color;
@@ -69,12 +71,12 @@
 
 	.command-item:hover:not(.disabled),
 	.command-item:focus-visible:not(.disabled) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.command-item:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: -2px;
 	}
 

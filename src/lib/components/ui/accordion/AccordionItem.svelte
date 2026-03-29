@@ -33,6 +33,6 @@
 
 <style>
 	.accordion-item {
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 	}
 </style>

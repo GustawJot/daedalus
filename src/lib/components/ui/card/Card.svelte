@@ -21,10 +21,9 @@
 <style>
 	.card {
 		border-radius: var(--radius, 0.375rem);
-		border: 1px solid hsl(var(--border));
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		border: 1px solid var(--border);
+		background-color: var(--background);
+		color: var(--foreground);
 		box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 </style>

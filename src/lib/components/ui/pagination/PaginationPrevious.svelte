@@ -1,18 +1,20 @@
 <script lang="ts">
 	type Props = {
+		id?: string;
 		disabled?: boolean;
 		onclick?: () => void;
 		class?: string;
 	};
 
 	let {
+		id,
 		disabled = false,
 		onclick,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<li>
+<li {id}>
 	<button
 		type="button"
 		class="pagination-prev {className}"
@@ -46,16 +48,15 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.25rem;
+		gap: var(--space-1);
 		height: 2.25rem;
 		padding: 0 0.75rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
 		background-color: transparent;
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
-		font-weight: 500;
+		color: var(--foreground);
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
 		cursor: pointer;
 		transition-property: background-color, color, border-color;
 		transition-duration: var(--transition-fast, 150ms);
@@ -63,13 +64,8 @@
 	}
 
 	.pagination-prev:hover:not(:disabled) {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
-	}
-
-	.pagination-prev:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.pagination-prev:disabled {

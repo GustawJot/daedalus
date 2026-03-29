@@ -53,86 +53,85 @@
 
 <style>
 	.typography {
-		font-family: var(--font-sans, system-ui, sans-serif);
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 	}
 
 	.h1 {
-		font-size: 2.25rem;
-		font-weight: 800;
-		line-height: 2.5rem;
+		font-size: var(--text-4xl);
+		font-weight: var(--font-extrabold);
+		line-height: var(--leading-4xl);
 		letter-spacing: -0.025em;
 		scroll-margin-top: 5rem;
 	}
 
 	.h2 {
-		font-size: 1.875rem;
-		font-weight: 600;
-		line-height: 2.25rem;
+		font-size: var(--text-3xl);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-3xl);
 		letter-spacing: -0.025em;
 		scroll-margin-top: 5rem;
 	}
 
 	.h3 {
-		font-size: 1.5rem;
-		font-weight: 600;
-		line-height: 2rem;
+		font-size: var(--text-2xl);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-2xl);
 		letter-spacing: -0.01em;
 		scroll-margin-top: 5rem;
 	}
 
 	.h4 {
-		font-size: 1.25rem;
-		font-weight: 600;
-		line-height: 1.75rem;
+		font-size: var(--text-xl);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-body);
 		letter-spacing: -0.01em;
 		scroll-margin-top: 5rem;
 	}
 
 	.p {
-		font-size: 1rem;
-		line-height: 1.75;
+		font-size: var(--text-base);
+		line-height: var(--leading-body);
 	}
 
 	.blockquote {
 		margin-top: 1.5rem;
-		border-left: 2px solid hsl(var(--border));
+		border-left: 2px solid var(--border);
 		padding-left: 1.5rem;
 		font-style: italic;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.code {
 		position: relative;
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--muted));
+		background-color: var(--muted);
 		padding: 0.2rem 0.4rem;
-		font-size: 0.875rem;
-		font-weight: 600;
+		font-size: var(--text-sm);
+		font-weight: var(--font-semibold);
 		font-family: var(--font-mono, ui-monospace, monospace);
 	}
 
 	.lead {
-		font-size: 1.25rem;
-		line-height: 1.75rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-xl);
+		line-height: var(--leading-body);
+		color: var(--muted-foreground);
 	}
 
 	.large {
-		font-size: 1.125rem;
-		font-weight: 600;
-		line-height: 1.75rem;
+		font-size: var(--text-lg);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-body);
 	}
 
 	.small {
-		font-size: 0.875rem;
-		font-weight: 500;
-		line-height: 1.25rem;
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-sm);
 	}
 
 	.muted {
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
+		color: var(--muted-foreground);
 	}
 </style>

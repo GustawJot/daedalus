@@ -40,17 +40,15 @@
 		justify-content: center;
 		background: none;
 		border: none;
-		padding: 0;
 		cursor: pointer;
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
+		color: var(--foreground);
 		font-size: inherit;
 		line-height: inherit;
 		outline: none;
 	}
 
 	.collapsible-trigger:focus-visible {
-		outline: 2px solid hsl(var(--ring));
+		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 		border-radius: 2px;
 	}

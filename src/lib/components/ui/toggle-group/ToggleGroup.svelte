@@ -52,7 +52,6 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.toggle-group.disabled {

@@ -1,16 +1,19 @@
 <script lang="ts">
 	type Props = {
+		id?: string;
 		onclick?: () => void;
 		class?: string;
 	};
 
 	let {
+		id,
 		onclick,
 		class: className = ''
 	}: Props = $props();
 </script>
 
 <button
+	{id}
 	type="button"
 	class="sidebar-trigger {className}"
 	{onclick}
@@ -43,7 +46,7 @@
 		border: none;
 		border-radius: var(--radius, 0.375rem);
 		background-color: transparent;
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 		cursor: pointer;
 		transition-property: background-color, color;
 		transition-duration: var(--transition-fast, 150ms);
@@ -52,12 +55,8 @@
 	}
 
 	.sidebar-trigger:hover {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
-	.sidebar-trigger:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
-	}
 </style>

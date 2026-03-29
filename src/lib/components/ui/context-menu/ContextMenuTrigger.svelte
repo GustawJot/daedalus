@@ -2,12 +2,14 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		oncontextmenu?: (e: MouseEvent) => void;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		oncontextmenu,
 		children,
 		class: className = ''
@@ -20,7 +22,7 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="context-trigger {className}" oncontextmenu={handleContextMenu}>
+<div {id} class="context-trigger {className}" oncontextmenu={handleContextMenu}>
 	{#if children}{@render children()}{/if}
 </div>
 

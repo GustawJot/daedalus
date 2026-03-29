@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="sidebar-group {className}">
+<div {id} class="sidebar-group {className}">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -20,7 +22,7 @@
 	.sidebar-group {
 		display: flex;
 		flex-direction: column;
-		gap: 0.125rem;
+		gap: var(--space-0-5);
 		padding: 0.25rem 0;
 	}
 </style>

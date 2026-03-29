@@ -4,6 +4,7 @@
 	export type AvatarSize = 'sm' | 'default' | 'lg';
 
 	type Props = {
+		id?: string;
 		src?: string | null;
 		alt?: string;
 		fallback?: string;
@@ -12,6 +13,7 @@
 	};
 
 	let {
+		id,
 		src = null,
 		alt = '',
 		fallback = '',
@@ -41,7 +43,7 @@
 	let showFallback = $derived(!src || imageError);
 </script>
 
-<span class="avatar size-{size} {className}" role="img" aria-label={alt || fallback}>
+<span {id} class="avatar size-{size} {className}" role="img" aria-label={alt || fallback}>
 	{#if !showFallback}
 		<img
 			{src}
@@ -65,12 +67,11 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 9999px;
+		border-radius: var(--radius-full);
 		overflow: hidden;
-		background-color: hsl(var(--muted));
-		color: hsl(var(--muted-foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-weight: 500;
+		background-color: var(--muted);
+		color: var(--muted-foreground);
+		font-weight: var(--font-medium);
 		flex-shrink: 0;
 		vertical-align: middle;
 	}
@@ -78,19 +79,19 @@
 	.size-sm {
 		width: 2rem;
 		height: 2rem;
-		font-size: 0.75rem;
+		font-size: var(--text-xs);
 	}
 
 	.size-default {
 		width: 2.5rem;
 		height: 2.5rem;
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 	}
 
 	.size-lg {
 		width: 3rem;
 		height: 3rem;
-		font-size: 1rem;
+		font-size: var(--text-base);
 	}
 
 	.avatar-image {

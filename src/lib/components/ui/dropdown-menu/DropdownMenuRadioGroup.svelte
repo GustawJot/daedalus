@@ -2,11 +2,13 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		value?: string;
 		children?: Snippet<[{ value: string; set: (v: string) => void }]>;
 	};
 
 	let {
+		id,
 		value = $bindable(''),
 		children
 	}: Props = $props();
@@ -16,7 +18,7 @@
 	}
 </script>
 
-<div role="group">
+<div {id} role="group">
 	{#if children}
 		{@render children({ value, set })}
 	{/if}

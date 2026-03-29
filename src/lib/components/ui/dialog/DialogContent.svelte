@@ -3,6 +3,7 @@
 	import DialogOverlay from './DialogOverlay.svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		onclose?: () => void;
 		children?: Snippet;
@@ -10,6 +11,7 @@
 	};
 
 	let {
+		id,
 		open = false,
 		onclose,
 		children,
@@ -74,6 +76,7 @@
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<div
 			bind:this={contentEl}
+			{id}
 			class="dialog-content {className}"
 			role="dialog"
 			aria-modal="true"
@@ -108,16 +111,15 @@
 		max-width: 32rem;
 		max-height: calc(100vh - 2rem);
 		overflow-y: auto;
-		gap: 1rem;
-		border: 1px solid hsl(var(--border));
+		gap: var(--space-4);
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.5rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		background-color: var(--background);
+		color: var(--foreground);
 		padding: 1.5rem;
 		box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
 		animation: content-in var(--transition-normal, 200ms) ease-out;
 		outline: none;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	@keyframes content-in {
@@ -140,11 +142,10 @@
 		justify-content: center;
 		width: 1.5rem;
 		height: 1.5rem;
-		padding: 0;
 		border: none;
 		border-radius: var(--radius, 0.25rem);
 		background: transparent;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		cursor: pointer;
 		opacity: 0.7;
 		transition: opacity var(--transition-fast, 150ms) ease;
@@ -154,8 +155,4 @@
 		opacity: 1;
 	}
 
-	.dialog-close:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
-	}
 </style>

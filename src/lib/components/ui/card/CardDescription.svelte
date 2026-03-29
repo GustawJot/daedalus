@@ -20,10 +20,8 @@
 
 <style>
 	.card-description {
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		color: hsl(var(--muted-foreground));
-		margin: 0;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
+		color: var(--muted-foreground);
 	}
 </style>

@@ -2,17 +2,20 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
 <span
+	{id}
 	role="link"
 	aria-disabled="true"
 	aria-current="page"
@@ -23,8 +26,7 @@
 
 <style>
 	.breadcrumb-page {
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-weight: 500;
-		color: hsl(var(--foreground));
+		font-weight: var(--font-medium);
+		color: var(--foreground);
 	}
 </style>

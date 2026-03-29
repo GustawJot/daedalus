@@ -2,23 +2,21 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
-	let { children, class: className = '' }: Props = $props();
+	let { id, children, class: className = '' }: Props = $props();
 </script>
 
-<p class="alertdialog-description {className}">
+<p {id} class="alertdialog-description {className}">
 	{#if children}{@render children()}{/if}
 </p>
 
 <style>
 	.alertdialog-description {
-		font-size: 0.875rem;
-		line-height: 1.5;
-		color: hsl(var(--muted-foreground));
-		margin: 0;
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		color: var(--muted-foreground);
 	}
 </style>

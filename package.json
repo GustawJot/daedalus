@@ -10,7 +10,7 @@
 			"types": "./dist/components/ui/index.d.ts",
 			"default": "./dist/components/ui/index.js"
 		},
-		"./theme": "./dist/styles/theme.css"
+		"./theme": "./dist/styles/daedalus.css"
 	},
 	"files": [
 		"dist"

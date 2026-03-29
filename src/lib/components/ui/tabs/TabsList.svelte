@@ -24,9 +24,9 @@
 		align-items: center;
 		justify-content: center;
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--muted));
+		background-color: var(--muted);
 		padding: 0.25rem;
-		color: hsl(var(--muted-foreground));
-		gap: 0.25rem;
+		color: var(--muted-foreground);
+		gap: var(--space-1);
 	}
 </style>

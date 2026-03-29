@@ -230,7 +230,6 @@
 	.combobox {
 		position: relative;
 		display: inline-block;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.combobox.disabled {
@@ -242,29 +241,23 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		width: 100%;
 		min-width: 12rem;
 		height: 2.25rem;
 		padding: 0 0.75rem;
-		border: 1px solid hsl(var(--input));
+		border: 1px solid var(--input);
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
+		background-color: var(--background);
+		color: var(--foreground);
+		font-size: var(--text-sm);
 		cursor: pointer;
 		transition: border-color var(--transition-fast, 150ms) ease;
 		text-align: left;
 	}
 
 	.combobox-trigger:hover:not(:disabled) {
-		border-color: hsl(var(--ring));
-	}
-
-	.combobox-trigger:focus-visible {
-		outline: 2px solid hsl(var(--ring));
-		outline-offset: 2px;
+		border-color: var(--ring);
 	}
 
 	.trigger-text {
@@ -275,12 +268,12 @@
 	}
 
 	.trigger-text.placeholder {
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.chevron {
 		flex-shrink: 0;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		transition: transform var(--transition-fast, 150ms) ease;
 	}
 
@@ -295,9 +288,9 @@
 		left: 0;
 		right: 0;
 		margin-top: 0.25rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--background));
+		background-color: var(--background);
 		box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
 		animation: dropdown-in var(--transition-fast, 150ms) ease-out;
 		overflow: hidden;
@@ -317,66 +310,64 @@
 	.search-wrapper {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		padding: 0.5rem 0.75rem;
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 	}
 
 	.search-icon {
 		flex-shrink: 0;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.search-input {
 		flex: 1;
 		border: none;
 		background: transparent;
-		color: hsl(var(--foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
-		font-size: 0.875rem;
+		color: var(--foreground);
+		font-size: var(--text-sm);
 		outline: none;
 	}
 
 	.search-input::placeholder {
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 	}
 
 	.empty-message {
 		padding: 1.5rem 0.75rem;
 		text-align: center;
-		font-size: 0.875rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-sm);
+		color: var(--muted-foreground);
 	}
 
 	.options-list {
 		max-height: 12rem;
 		overflow-y: auto;
 		list-style: none;
-		margin: 0;
 		padding: 0.25rem;
 		scrollbar-width: thin;
-		scrollbar-color: hsl(var(--border)) transparent;
+		scrollbar-color: var(--border) transparent;
 	}
 
 	.option-item {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.5rem;
+		gap: var(--space-2);
 		padding: 0.375rem 0.5rem;
 		border-radius: calc(var(--radius, 0.375rem) - 2px);
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 		cursor: pointer;
 		transition: background-color var(--transition-fast, 150ms) ease;
 	}
 
 	.option-item.highlighted {
-		background-color: hsl(var(--accent));
-		color: hsl(var(--accent-foreground));
+		background-color: var(--accent);
+		color: var(--accent-foreground);
 	}
 
 	.option-item.selected {
-		font-weight: 500;
+		font-weight: var(--font-medium);
 	}
 
 	.option-label {
@@ -388,6 +379,6 @@
 
 	.check-icon {
 		flex-shrink: 0;
-		color: hsl(var(--primary));
+		color: var(--primary);
 	}
 </style>

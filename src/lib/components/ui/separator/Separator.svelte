@@ -25,7 +25,7 @@
 <style>
 	.separator {
 		flex-shrink: 0;
-		background-color: hsl(var(--border));
+		background-color: var(--border);
 	}
 
 	.horizontal {

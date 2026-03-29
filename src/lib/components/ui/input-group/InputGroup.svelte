@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="input-group {className}">
+<div {id} class="input-group {className}">
 	{#if children}
 		{@render children()}
 	{/if}
@@ -22,7 +24,6 @@
 	.input-group {
 		display: flex;
 		align-items: stretch;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	/* First child gets left radius only */

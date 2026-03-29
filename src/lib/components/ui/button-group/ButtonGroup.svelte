@@ -2,19 +2,21 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		orientation?: 'horizontal' | 'vertical';
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		orientation = 'horizontal',
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="button-group {orientation} {className}" role="group">
+<div {id} class="button-group {orientation} {className}" role="group">
 	{#if children}
 		{@render children()}
 	{/if}
@@ -23,7 +25,6 @@
 <style>
 	.button-group {
 		display: inline-flex;
-		font-family: var(--font-sans, system-ui, sans-serif);
 	}
 
 	.button-group.horizontal {

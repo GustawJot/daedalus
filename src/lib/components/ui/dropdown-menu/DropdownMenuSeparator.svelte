@@ -1,17 +1,18 @@
 <script lang="ts">
 	type Props = {
+		id?: string;
 		class?: string;
 	};
 
-	let { class: className = '' }: Props = $props();
+	let { id, class: className = '' }: Props = $props();
 </script>
 
-<div class="dropdown-separator {className}" role="separator"></div>
+<div {id} class="dropdown-separator {className}" role="separator"></div>
 
 <style>
 	.dropdown-separator {
 		height: 1px;
 		margin: 0.25rem -0.25rem;
-		background-color: hsl(var(--border));
+		background-color: var(--border);
 	}
 </style>

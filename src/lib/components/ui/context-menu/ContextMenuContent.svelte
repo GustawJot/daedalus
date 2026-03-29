@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		x?: number;
 		y?: number;
@@ -11,6 +12,7 @@
 	};
 
 	let {
+		id,
 		open = false,
 		x = 0,
 		y = 0,
@@ -90,6 +92,7 @@
 {#if open}
 	<div
 		bind:this={contentEl}
+		{id}
 		class="contextmenu-content {className}"
 		role="menu"
 		tabindex="-1"
@@ -105,14 +108,13 @@
 		position: fixed;
 		z-index: var(--z-popover, 50);
 		min-width: 8rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.375rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		background-color: var(--background);
+		color: var(--foreground);
 		padding: 0.25rem;
 		box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
 		outline: none;
-		font-family: var(--font-sans, system-ui, sans-serif);
 		animation: contextmenu-in var(--transition-fast, 150ms) ease-out;
 		overflow: hidden;
 	}

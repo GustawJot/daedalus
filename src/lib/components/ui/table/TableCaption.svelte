@@ -2,26 +2,27 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	}
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<caption class="table-caption {className}">
+<caption {id} class="table-caption {className}">
 	{#if children}{@render children()}{/if}
 </caption>
 
 <style>
 	.table-caption {
 		margin-top: 1rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		color: hsl(var(--muted-foreground));
-		font-family: var(--font-sans, system-ui, sans-serif);
+		font-size: var(--text-sm);
+		line-height: var(--leading-sm);
+		color: var(--muted-foreground);
 	}
 </style>

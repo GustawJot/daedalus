@@ -5,6 +5,7 @@
 	export type PopoverSide = 'top' | 'bottom';
 
 	type Props = {
+		id?: string;
 		open?: boolean;
 		align?: PopoverAlign;
 		side?: PopoverSide;
@@ -14,6 +15,7 @@
 	};
 
 	let {
+		id,
 		open = false,
 		align = 'center',
 		side = 'bottom',
@@ -55,6 +57,7 @@
 {#if open}
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div
+		{id}
 		bind:this={contentEl}
 		class="popover-content align-{align} side-{side} {className}"
 		role="dialog"
@@ -70,14 +73,13 @@
 		position: absolute;
 		z-index: var(--z-popover, 50);
 		width: 18rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius, 0.5rem);
-		background-color: hsl(var(--background));
-		color: hsl(var(--foreground));
+		background-color: var(--background);
+		color: var(--foreground);
 		padding: 1rem;
 		box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
 		outline: none;
-		font-family: var(--font-sans, system-ui, sans-serif);
 		animation: popover-in var(--transition-fast, 150ms) ease-out;
 	}
 

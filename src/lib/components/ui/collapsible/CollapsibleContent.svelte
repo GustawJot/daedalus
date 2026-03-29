@@ -64,15 +64,10 @@
 <style>
 	.collapsible-content {
 		overflow: hidden;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 	}
 
 	.collapsible-content.animating {
 		transition: height var(--transition-normal, 200ms) ease;
-	}
-
-	.collapsible-content-inner {
-		padding: 0;
 	}
 </style>

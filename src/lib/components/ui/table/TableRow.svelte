@@ -20,15 +20,15 @@
 
 <style>
 	.table-row {
-		border-bottom: 1px solid hsl(var(--border));
+		border-bottom: 1px solid var(--border);
 		transition: background-color var(--transition-fast, 150ms);
 	}
 
 	.table-row:hover {
-		background-color: hsl(var(--muted) / 0.5);
+		background-color: color-mix(in srgb, var(--muted) 50%, transparent);
 	}
 
 	.table-row[data-state='selected'] {
-		background-color: hsl(var(--muted));
+		background-color: var(--muted);
 	}
 </style>

@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		onmouseenter?: () => void;
 		onmouseleave?: () => void;
 		children?: Snippet;
@@ -9,6 +10,7 @@
 	};
 
 	let {
+		id,
 		onmouseenter,
 		onmouseleave,
 		children,
@@ -18,6 +20,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <span
+	{id}
 	class="hovercard-trigger {className}"
 	onmouseenter={onmouseenter}
 	onmouseleave={onmouseleave}

@@ -2,17 +2,19 @@
 	import type { Snippet } from 'svelte';
 
 	type Props = {
+		id?: string;
 		children?: Snippet;
 		class?: string;
 	};
 
 	let {
+		id,
 		children,
 		class: className = ''
 	}: Props = $props();
 </script>
 
-<div class="command-list {className}" role="listbox">
+<div {id} class="command-list {className}" role="listbox">
 	{#if children}{@render children()}{/if}
 </div>
 
@@ -23,7 +25,7 @@
 		overflow-x: hidden;
 		padding: 0.25rem;
 		scrollbar-width: thin;
-		scrollbar-color: hsl(var(--border)) transparent;
+		scrollbar-color: var(--border) transparent;
 	}
 
 	.command-list::-webkit-scrollbar {
@@ -35,7 +37,7 @@
 	}
 
 	.command-list::-webkit-scrollbar-thumb {
-		background-color: hsl(var(--border));
-		border-radius: 9999px;
+		background-color: var(--border);
+		border-radius: var(--radius-full);
 	}
 </style>

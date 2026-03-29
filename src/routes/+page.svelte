@@ -731,8 +731,7 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		padding: 2rem 1.5rem;
-		font-family: var(--font-sans, system-ui, sans-serif);
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 	}
 
 	.demo-header {
@@ -746,15 +745,15 @@
 	}
 
 	.demo-title {
-		font-size: 2.25rem;
-		font-weight: 700;
+		font-size: var(--text-4xl);
+		font-weight: var(--font-semibold);
 		letter-spacing: -0.025em;
 		margin-bottom: 0.5rem;
 	}
 
 	.demo-subtitle {
-		color: hsl(var(--muted-foreground));
-		font-size: 1.125rem;
+		color: var(--muted-foreground);
+		font-size: var(--text-lg);
 	}
 
 	.theme-toggle {
@@ -763,16 +762,16 @@
 		justify-content: center;
 		width: 2.5rem;
 		height: 2.5rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius);
 		background: transparent;
-		color: hsl(var(--foreground));
+		color: var(--foreground);
 		cursor: pointer;
 		transition: background-color var(--transition-fast);
 	}
 
 	.theme-toggle:hover {
-		background-color: hsl(var(--accent));
+		background-color: var(--accent);
 	}
 
 	.demo-main {
@@ -788,8 +787,8 @@
 	}
 
 	.section-title {
-		font-size: 1.5rem;
-		font-weight: 600;
+		font-size: var(--text-2xl);
+		font-weight: var(--font-semibold);
 		letter-spacing: -0.025em;
 	}
 
@@ -850,8 +849,8 @@
 	}
 
 	.state-text {
-		font-size: 0.875rem;
-		color: hsl(var(--muted-foreground));
+		font-size: var(--text-sm);
+		color: var(--muted-foreground);
 	}
 
 	.select-demo {
@@ -882,9 +881,9 @@
 
 	.collapsible-item {
 		padding: 0.5rem 0.75rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius);
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 		margin-top: 0.5rem;
 	}
 
@@ -897,7 +896,7 @@
 	:global(.skeleton-circle) {
 		width: 3rem;
 		height: 3rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-full);
 	}
 
 	:global(.skeleton-line) {
@@ -915,22 +914,22 @@
 
 	:global(.scroll-demo) {
 		height: 12rem;
-		border: 1px solid hsl(var(--border));
+		border: 1px solid var(--border);
 		border-radius: var(--radius);
 		max-width: 20rem;
 	}
 
 	.scroll-item {
 		padding: 0.75rem 1rem;
-		border-bottom: 1px solid hsl(var(--border));
-		font-size: 0.875rem;
+		border-bottom: 1px solid var(--border);
+		font-size: var(--text-sm);
 	}
 
 	.demo-footer {
 		margin-top: 3rem;
 		text-align: center;
-		color: hsl(var(--muted-foreground));
-		font-size: 0.875rem;
+		color: var(--muted-foreground);
+		font-size: var(--text-sm);
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
