@@ -48,10 +48,10 @@
 	.sidebar-item {
 		display: flex;
 		align-items: center;
-		gap: var(--space-3);
-		padding: 0.5rem 0.75rem;
-		border-radius: var(--radius, 0.375rem);
-		font-size: var(--text-sm);
+		gap: 12px;
+		padding: 6px 12px;
+		border-radius: var(--radius);
+		font-size: var(--text-xs);
 		color: var(--foreground);
 		text-decoration: none;
 		cursor: pointer;
@@ -61,6 +61,7 @@
 		overflow: hidden;
 		white-space: nowrap;
 		outline: none;
+
 	}
 
 	.sidebar-item:hover:not(.disabled) {

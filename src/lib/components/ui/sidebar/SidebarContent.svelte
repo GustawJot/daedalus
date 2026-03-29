@@ -23,7 +23,7 @@
 		flex: 1;
 		overflow-y: auto;
 		overflow-x: hidden;
-		padding: 0.5rem;
+		padding: 6px;
 		scrollbar-width: thin;
 		scrollbar-color: var(--border) transparent;
 	}

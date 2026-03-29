@@ -23,9 +23,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: var(--space-1-5);
+		gap: var(--space-1);
 		list-style: none;
-		font-size: var(--text-sm);
-		color: var(--muted-foreground);
+		font-size: var(--text-xs);
+		color: var(--secondary);
 	}
 </style>

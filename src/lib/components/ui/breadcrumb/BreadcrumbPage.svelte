@@ -26,7 +26,7 @@
 
 <style>
 	.breadcrumb-page {
-		font-weight: var(--font-medium);
+		font-weight: var(--font-semibold);
 		color: var(--foreground);
 	}
 </style>

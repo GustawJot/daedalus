@@ -38,7 +38,7 @@
 	.breadcrumb-separator {
 		display: inline-flex;
 		align-items: center;
-		color: var(--muted-foreground);
+		color: var(--secondary);
 	}
 
 	.breadcrumb-separator svg {

@@ -22,7 +22,7 @@
 	.sidebar-footer {
 		display: flex;
 		align-items: center;
-		padding: 0.75rem;
+		padding: 8px 18px;
 		border-top: 1px solid var(--border);
 		flex-shrink: 0;
 		min-height: 3.5rem;

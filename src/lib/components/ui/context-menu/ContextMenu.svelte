@@ -3,16 +3,17 @@
 
 	type Props = {
 		open?: boolean;
+		x?: number;
+		y?: number;
 		children?: Snippet<[{ open: boolean; close: () => void; x: number; y: number }]>;
 	};
 
 	let {
 		open = $bindable(false),
+		x = $bindable(0),
+		y = $bindable(0),
 		children
 	}: Props = $props();
-
-	let x = $state(0);
-	let y = $state(0);
 
 	function close() {
 		open = false;

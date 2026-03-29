@@ -22,7 +22,6 @@
 	.sidebar-group {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-0-5);
-		padding: 0.25rem 0;
+		gap: var(--space-1);
 	}
 </style>

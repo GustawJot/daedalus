@@ -20,16 +20,16 @@
 	--popover: light-dark(hsl(0 0% 100%), hsl(240 10% 3.9%));
 	--popover-foreground: light-dark(hsl(240 10% 3.9%), hsl(0 0% 98%));
 
-	--primary: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
+	--primary: light-dark(var(--color-gray-300), hsl(0 0% 98%));
 	--primary-foreground: light-dark(hsl(0 0% 98%), hsl(240 5.9% 10%));
 
-	--secondary: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
+	--secondary: light-dark(var(--color-gray-400), hsl(240 3.7% 15.9%));
 	--secondary-foreground: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
 
 	--muted: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
 	--muted-foreground: light-dark(hsl(240 3.8% 46.1%), hsl(240 5% 64.9%));
 
-	--accent: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
+	--accent: light-dark(var(--color-gray-100), hsl(240 3.7% 15.9%));
 	--accent-foreground: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
 
 	--destructive: light-dark(hsl(0 84.2% 60.2%), hsl(0 62.8% 30.6%));
@@ -44,12 +44,29 @@
 	--info: light-dark(hsl(217 91% 60%), hsl(217 91% 50%));
 	--info-foreground: hsl(0 0% 98%);
 
-	--border: light-dark(hsl(240 5.9% 90%), hsl(240 3.7% 15.9%));
+	--border: light-dark(var(--color-gray-200), hsl(240 3.7% 15.9%));
 	--input: light-dark(hsl(240 5.9% 90%), hsl(240 3.7% 15.9%));
 	--ring: light-dark(hsl(240 5.9% 10%), hsl(240 4.9% 83.9%));
 
+	/* ---------- Color Primitives ---------- */
+
+	--color-transparent: transparent;
+	--color-gray-50: oklch(98.5% 0.002 247.839);
+	--color-gray-100: oklch(96.7% 0.003 264.542);
+	--color-gray-200: oklch(92.8% 0.006 264.531);
+	--color-gray-300: oklch(87.2% 0.01 258.338);
+	--color-gray-400: oklch(70.7% 0.022 261.325);
+	--color-gray-500: oklch(55.1% 0.027 264.364);
+	--color-gray-600: oklch(44.6% 0.03 256.802);
+	--color-gray-700: oklch(37.3% 0.034 259.733);
+	--color-gray-800: oklch(27.8% 0.033 256.848);
+	--color-gray-900: oklch(21% 0.034 264.665);
+	--color-gray-950: oklch(13% 0.028 261.692);
+
+
+
 	/* ---------- Radius ---------- */
-	--radius: 0.5rem;
+	--radius: 5px;
 	--radius-full: 9999px;
 
 	/* ---------- Shadows ---------- */
@@ -59,7 +76,7 @@
 	--shadow-lg: 0 10px 15px -3px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4)), 0 4px 6px -4px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
 
 	/* ---------- Typography ---------- */
-	--font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-sans: Inter, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
 	/* ---------- Spacing Scale ---------- */
@@ -78,6 +95,7 @@
 	--space-16: 4rem;
 
 	/* ---------- Typography Scale ---------- */
+	--text-2xs: 0.625rem;
 	--text-xs: 0.75rem;
 	--text-sm: 0.875rem;
 	--text-base: 1rem;
@@ -143,8 +161,8 @@ body {
 	min-height: 100vh;
 	font-family: var(--font-sans);
 	font-size: 1rem;
-	line-height: 1.5;
-	color: var(--foreground);
+	line-height: 1.35;
+	color: var(--primary);
 	background-color: var(--background);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

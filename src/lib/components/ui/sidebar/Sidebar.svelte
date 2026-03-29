@@ -13,7 +13,7 @@
 	let {
 		id,
 		open = $bindable(true),
-		width = '16rem',
+		width = '250px',
 		collapsedWidth = '3.5rem',
 		children,
 		class: className = ''
@@ -35,9 +35,8 @@
 	.sidebar {
 		display: flex;
 		flex-direction: column;
-		width: var(--sidebar-width, 16rem);
+		width: var(--sidebar-width);
 		height: 100%;
-		background-color: var(--background);
 		border-right: 1px solid var(--border);
 		transition: width var(--transition-normal, 200ms) ease;
 		overflow: hidden;

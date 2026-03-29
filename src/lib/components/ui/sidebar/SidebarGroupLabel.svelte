@@ -20,11 +20,10 @@
 
 <style>
 	.sidebar-group-label {
-		padding: 0.375rem 0.5rem;
-		font-size: var(--text-xs);
-		font-weight: var(--font-medium);
-		color: var(--muted-foreground);
-		letter-spacing: 0.02em;
+		padding: 8px 12px;
+		font-size: var(--text-2xs);
+		color: var(--secondary);
+		letter-spacing: 0.025rem;
 		text-transform: uppercase;
 		overflow: hidden;
 		white-space: nowrap;

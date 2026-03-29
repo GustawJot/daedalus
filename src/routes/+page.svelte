@@ -36,6 +36,20 @@
 	import { Tooltip } from '$lib/components/ui/tooltip';
 	import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuLabel } from '$lib/components/ui/dropdown-menu';
 
+	// Additional Form
+	import { InputGroup, InputGroupText } from '$lib/components/ui/input-group';
+	import { ButtonGroup } from '$lib/components/ui/button-group';
+
+	// Additional Overlay
+	import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuLabel, ContextMenuSeparator } from '$lib/components/ui/context-menu';
+	import { Drawer, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription } from '$lib/components/ui/drawer';
+	import { HoverCard, HoverCardTrigger, HoverCardContent } from '$lib/components/ui/hover-card';
+
+	// Additional
+	import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator } from '$lib/components/ui/command';
+	import { Item } from '$lib/components/ui/item';
+	import { Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarItem, SidebarTrigger } from '$lib/components/ui/sidebar';
+
 	// Complex
 	import { Avatar } from '$lib/components/ui/avatar';
 	import { Alert, AlertTitle, AlertDescription as AlertDesc } from '$lib/components/ui/alert';
@@ -76,6 +90,14 @@
 	let tabValue = $state('tab1');
 	let sortKey = $state('name');
 	let sortDirection: 'asc' | 'desc' = $state('asc');
+	let drawerOpen = $state(false);
+	let contextMenuOpen = $state(false);
+	let contextMenuX = $state(0);
+	let contextMenuY = $state(0);
+	let contextMenuCheckbox = $state(true);
+	let commandSearch = $state('');
+	let sidebarOpen = $state(true);
+	let activeItem = $state('item1');
 
 	const comboboxOptions = [
 		{ value: 'svelte', label: 'Svelte' },
@@ -708,6 +730,192 @@
 
 		<Separator />
 
+		<!-- ═══════════════════ INPUT GROUP & BUTTON GROUP ═══════════════════ -->
+		<section class="demo-section">
+			<h2 class="section-title">Input Group & Button Group</h2>
+			<div class="demo-form">
+				<InputGroup>
+					<InputGroupText>https://</InputGroupText>
+					<Input placeholder="example.com" />
+				</InputGroup>
+				<InputGroup>
+					<InputGroupText>@</InputGroupText>
+					<Input placeholder="username" />
+					<InputGroupText>.com</InputGroupText>
+				</InputGroup>
+			</div>
+			<div class="demo-row" style="margin-top: 1rem;">
+				<ButtonGroup>
+					<Button variant="outline">Left</Button>
+					<Button variant="outline">Center</Button>
+					<Button variant="outline">Right</Button>
+				</ButtonGroup>
+				<ButtonGroup orientation="vertical">
+					<Button variant="outline" size="sm">Top</Button>
+					<Button variant="outline" size="sm">Mid</Button>
+					<Button variant="outline" size="sm">Bottom</Button>
+				</ButtonGroup>
+			</div>
+		</section>
+
+		<Separator />
+
+		<!-- ═══════════════════ ITEM ═══════════════════ -->
+		<section class="demo-section">
+			<h2 class="section-title">Item</h2>
+			<div class="demo-item-list">
+				<Item active={activeItem === 'item1'} onclick={() => activeItem = 'item1'}>Dashboard</Item>
+				<Item active={activeItem === 'item2'} onclick={() => activeItem = 'item2'}>Settings</Item>
+				<Item active={activeItem === 'item3'} onclick={() => activeItem = 'item3'}>Analytics</Item>
+				<Item disabled>Disabled Item</Item>
+			</div>
+		</section>
+
+		<Separator />
+
+		<!-- ═══════════════════ HOVER CARD ═══════════════════ -->
+		<section class="demo-section">
+			<h2 class="section-title">Hover Card</h2>
+			<div class="demo-row">
+				{#snippet hoverCardChildren({ open: isOpen, show, hide }: { open: boolean; show: () => void; hide: () => void })}
+					<HoverCardTrigger onmouseenter={show} onmouseleave={hide}>
+						<Button variant="link">@daedalus</Button>
+					</HoverCardTrigger>
+					<HoverCardContent open={isOpen} onmouseenter={show} onmouseleave={hide}>
+						<div class="hovercard-body">
+							<Avatar fallback="DU" size="sm" />
+							<div>
+								<Typography variant="h4">Daedalus UI</Typography>
+								<Typography variant="muted">Pure Svelte 5 component library — no dependencies.</Typography>
+							</div>
+						</div>
+					</HoverCardContent>
+				{/snippet}
+				<HoverCard children={hoverCardChildren} />
+			</div>
+		</section>
+
+		<Separator />
+
+		<!-- ═══════════════════ CONTEXT MENU ═══════════════════ -->
+		<section class="demo-section">
+			<h2 class="section-title">Context Menu</h2>
+			{#snippet contextMenuChildren({ open: isOpen, close, x, y }: { open: boolean; close: () => void; x: number; y: number })}
+				<ContextMenuTrigger oncontextmenu={(e) => { contextMenuX = e.clientX; contextMenuY = e.clientY; contextMenuOpen = true; }}>
+					<div class="context-menu-area">
+						Right-click here
+					</div>
+				</ContextMenuTrigger>
+				<ContextMenuContent open={isOpen} x={x} y={y} onclose={close}>
+					<ContextMenuLabel>Actions</ContextMenuLabel>
+					<ContextMenuSeparator />
+					<ContextMenuItem onclick={close}>Copy</ContextMenuItem>
+					<ContextMenuItem onclick={close}>Paste</ContextMenuItem>
+					<ContextMenuSeparator />
+					<ContextMenuCheckboxItem bind:checked={contextMenuCheckbox}>Show Hidden</ContextMenuCheckboxItem>
+					<ContextMenuSeparator />
+					<ContextMenuItem tone="critical" onclick={close}>Delete</ContextMenuItem>
+				</ContextMenuContent>
+			{/snippet}
+			<ContextMenu bind:open={contextMenuOpen} bind:x={contextMenuX} bind:y={contextMenuY} children={contextMenuChildren} />
+		</section>
+
+		<Separator />
+
+		<!-- ═══════════════════ DRAWER ═══════════════════ -->
+		<section class="demo-section">
+			<h2 class="section-title">Drawer</h2>
+			<Button variant="outline" onclick={() => drawerOpen = true}>Open Drawer</Button>
+			<Drawer bind:open={drawerOpen}>
+				{#snippet children({ close }: { close: () => void })}
+					<DrawerContent open={drawerOpen} onclose={close}>
+						<DrawerHeader>
+							<DrawerTitle>Edit Settings</DrawerTitle>
+							<DrawerDescription>Adjust your preferences below. Changes are saved automatically.</DrawerDescription>
+						</DrawerHeader>
+						<div class="drawer-body">
+							<Field>
+								<Label for="drawer-name">Display Name</Label>
+								<Input id="drawer-name" placeholder="Enter your name" />
+							</Field>
+							<Field>
+								<Label for="drawer-bio">Bio</Label>
+								<Textarea id="drawer-bio" placeholder="Tell us about yourself..." rows={3} />
+							</Field>
+						</div>
+						<DrawerFooter>
+							<Button onclick={close}>Save</Button>
+							<Button variant="outline" onclick={close}>Cancel</Button>
+						</DrawerFooter>
+					</DrawerContent>
+				{/snippet}
+			</Drawer>
+		</section>
+
+		<Separator />
+
+		<!-- ═══════════════════ COMMAND ═══════════════════ -->
+		<section class="demo-section">
+			<h2 class="section-title">Command</h2>
+			<div class="demo-medium">
+				<Command>
+					<CommandInput bind:value={commandSearch} placeholder="Search commands..." />
+					<CommandList>
+						<CommandEmpty>No results found.</CommandEmpty>
+						<CommandGroup heading="Suggestions">
+							<CommandItem value="calendar" onselect={() => toast('Calendar selected')}>Calendar</CommandItem>
+							<CommandItem value="search" onselect={() => toast('Search selected')}>Search</CommandItem>
+							<CommandItem value="settings" onselect={() => toast('Settings selected')}>Settings</CommandItem>
+						</CommandGroup>
+						<CommandSeparator />
+						<CommandGroup heading="Settings">
+							<CommandItem value="profile" onselect={() => toast('Profile selected')}>Profile</CommandItem>
+							<CommandItem value="billing" onselect={() => toast('Billing selected')}>Billing</CommandItem>
+							<CommandItem value="keyboard" onselect={() => toast('Keyboard selected')}>Keyboard Shortcuts</CommandItem>
+						</CommandGroup>
+					</CommandList>
+				</Command>
+			</div>
+		</section>
+
+		<Separator />
+
+		<!-- ═══════════════════ SIDEBAR ═══════════════════ -->
+		<section class="demo-section">
+			<h2 class="section-title">Sidebar</h2>
+			<div class="sidebar-demo">
+				<Sidebar bind:open={sidebarOpen}>
+					<SidebarHeader>
+						<SidebarTrigger onclick={() => sidebarOpen = !sidebarOpen} />
+						{#if sidebarOpen}
+							<Typography variant="h4">App</Typography>
+						{/if}
+					</SidebarHeader>
+					<SidebarContent>
+						<SidebarGroup>
+							<SidebarGroupLabel>Navigation</SidebarGroupLabel>
+							<SidebarItem href="/" active>Dashboard</SidebarItem>
+							<SidebarItem>Projects</SidebarItem>
+							<SidebarItem>Analytics</SidebarItem>
+						</SidebarGroup>
+						<SidebarGroup>
+							<SidebarGroupLabel>Settings</SidebarGroupLabel>
+							<SidebarItem>Profile</SidebarItem>
+							<SidebarItem>Preferences</SidebarItem>
+							<SidebarItem disabled>Billing</SidebarItem>
+						</SidebarGroup>
+					</SidebarContent>
+					<SidebarFooter>
+						{#if sidebarOpen}
+							<Typography variant="muted">v1.0.0</Typography>
+						{/if}
+					</SidebarFooter>
+				</Sidebar>
+			</div>
+		</section>
+
+		<Separator />
+
 		<!-- ═══════════════════ TOAST ═══════════════════ -->
 		<section class="demo-section">
 			<h2 class="section-title">Toast (Sonner)</h2>
@@ -923,6 +1131,46 @@
 		padding: 0.75rem 1rem;
 		border-bottom: 1px solid var(--border);
 		font-size: var(--text-sm);
+	}
+
+	.demo-item-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		max-width: 16rem;
+	}
+
+	.hovercard-body {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.context-menu-area {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 8rem;
+		border: 2px dashed var(--border);
+		border-radius: var(--radius);
+		color: var(--muted-foreground);
+		font-size: var(--text-sm);
+		user-select: none;
+		max-width: 24rem;
+	}
+
+	.drawer-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1rem 1.5rem;
+	}
+
+	.sidebar-demo {
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		height: 20rem;
+		overflow: hidden;
 	}
 
 	.demo-footer {
