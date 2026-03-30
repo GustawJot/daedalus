@@ -151,6 +151,9 @@ export {
 	SidebarGroup,
 	SidebarGroupLabel,
 	SidebarItem,
+	SidebarMenu,
+	SidebarMenuItem,
+	SidebarMenuSub,
 	SidebarTrigger
 } from './sidebar/index.js';
 export { Toaster } from './sonner/index.js';

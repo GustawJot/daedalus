@@ -5,4 +5,7 @@ export { default as SidebarFooter } from './SidebarFooter.svelte';
 export { default as SidebarGroup } from './SidebarGroup.svelte';
 export { default as SidebarGroupLabel } from './SidebarGroupLabel.svelte';
 export { default as SidebarItem } from './SidebarItem.svelte';
+export { default as SidebarMenu } from './SidebarMenu.svelte';
+export { default as SidebarMenuItem } from './SidebarMenuItem.svelte';
+export { default as SidebarMenuSub } from './SidebarMenuSub.svelte';
 export { default as SidebarTrigger } from './SidebarTrigger.svelte';
