@@ -1,0 +1,52 @@
+name: Build, bump version, and commit dist
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if automated commit
+        id: check
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%s)
+          if echo "$COMMIT_MSG" | grep -q '\[skip ci\]'; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node.js
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.check.outputs.skip != 'true'
+        run: npm ci
+
+      - name: Build package
+        if: steps.check.outputs.skip != 'true'
+        run: npm run package
+
+      - name: Bump version and commit
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          npm version patch --no-git-tag-version
+          VERSION=$(grep -o '"version": *"[^"]*"' package.json | head -1 | grep -o '[0-9]*\.[0-9]*\.[0-9]*')
+          git add dist/ package.json package-lock.json
+          git commit -m "chore: build and bump version to ${VERSION} [skip ci]"
+          git push
