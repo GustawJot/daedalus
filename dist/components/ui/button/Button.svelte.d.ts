@@ -1,0 +1,20 @@
+import type { Snippet } from 'svelte';
+import type { Variant, Tone, Size } from '../types.js';
+type ButtonVariant = Variant;
+type ButtonTone = Tone;
+type ButtonSize = Size;
+type Props = {
+    variant?: ButtonVariant;
+    tone?: ButtonTone;
+    size?: ButtonSize;
+    iconOnly?: boolean;
+    children?: Snippet;
+    class?: string;
+    href?: string;
+    disabled?: boolean;
+    type?: 'button' | 'submit' | 'reset';
+    [key: string]: unknown;
+};
+declare const Button: import("svelte").Component<Props, {}, "">;
+type Button = ReturnType<typeof Button>;
+export default Button;

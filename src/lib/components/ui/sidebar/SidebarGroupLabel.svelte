@@ -21,6 +21,7 @@
 <style>
 	.sidebar-group-label {
 		padding: 8px 12px;
+		padding-top: 24px;
 		font-size: var(--text-2xs);
 		color: var(--secondary);
 		letter-spacing: 0.025rem;
